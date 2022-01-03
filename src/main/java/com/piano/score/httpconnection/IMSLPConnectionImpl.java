@@ -6,8 +6,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-public class IMSLPConnectionImpl implements ConnectionUrl {
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
+
+	private String testurl = "https://imslp.org/wiki/Category:Beethoven,_Ludwig_van";
+	private Document document;
 	private String url;
 
 	public IMSLPConnectionImpl(String url) {
@@ -15,23 +22,22 @@ public class IMSLPConnectionImpl implements ConnectionUrl {
 		this.url = url;
 	}
 
+	@Override
+	public void urlset() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	public void connecting() throws Exception {
-
-		URL url = new URL(this.url);
-		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-		httpURLConnection.setRequestMethod("GET");
-		httpURLConnection.setConnectTimeout(ConnectionUrl.TimeOutSet);
-		httpURLConnection.setReadTimeout(ConnectionUrl.TimeOutSet);
-
-		for (Map.Entry<String, List<String>> header : httpURLConnection.getHeaderFields().entrySet()) {
-			for (String value : header.getValue()) {
-				System.out.println(header.getKey() + " : " + value);
-			}
+		// TODO Auto-generated method stub
+		document = Jsoup.connect(testurl).get();
+		Elements elements = document.select(".categorypagelink");
+		
+		for(Element e : elements) {
+			System.out.println(e);
 		}
 
-		httpURLConnection.disconnect();
 	}
-	
-	
+
 }

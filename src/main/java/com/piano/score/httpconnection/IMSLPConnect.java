@@ -4,6 +4,6 @@ public interface IMSLPConnect {
 	
 	void urlset();
 	
-	void connecting();
+	void connecting() throws Exception;
 
 }

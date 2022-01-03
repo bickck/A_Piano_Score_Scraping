@@ -13,7 +13,7 @@ public class PianoScoreApplication {
 		
 		IMSLPConnectionImpl httpConnection = new IMSLPConnectionImpl("https://imslp.org/wiki/Main_Page");
 		
-		//httpConnection.connecting();
+		httpConnection.connecting();
 	}
 
 }

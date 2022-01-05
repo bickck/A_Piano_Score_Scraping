@@ -2,9 +2,8 @@ package com.piano.score.httpconnection;
 
 public interface ConnectionUrl {
 
-	static String mainUrl = "https://imslp.org/wiki/Main_Page";
+	static String defaultUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
+	static String mainUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=/retformat=json";
 
-	static String artistUrl = "https://imslp.org/wiki/Category:";
 	
-	static int TimeOutSet = 3000;
 }

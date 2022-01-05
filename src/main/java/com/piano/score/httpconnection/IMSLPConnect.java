@@ -1,9 +1,15 @@
 package com.piano.score.httpconnection;
 
+import com.piano.score.domain.ScoreMetaData;
+
 public interface IMSLPConnect {
 	
-	void urlset();
+	
 	
 	void connecting() throws Exception;
+	
+	ScoreMetaData getScoreMetaData(int start);
+
+	String defaultUrlSetting(Integer type, Integer start);
 
 }

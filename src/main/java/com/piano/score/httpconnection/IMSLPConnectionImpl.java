@@ -11,33 +11,36 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.piano.score.domain.ScoreMetaData;
+
 public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
 
-	private String testurl = "https://imslp.org/wiki/Category:Beethoven,_Ludwig_van";
+	private int startPage = 0;
 	private Document document;
-	private String url;
 
 	public IMSLPConnectionImpl(String url) {
 		// TODO Auto-generated constructor stub
-		this.url = url;
+
 	}
 
 	@Override
-	public void urlset() {
+	public String defaultUrlSetting(Integer type, Integer start) {
 		// TODO Auto-generated method stub
-
+		String url = defaultUrl + "sort" + type.toString() + "/type" + start.toString() + "/retformat=json";
+		return url;
 	}
 
 	@Override
 	public void connecting() throws Exception {
 		// TODO Auto-generated method stub
-		document = Jsoup.connect(testurl).get();
-		Elements elements = document.select(".categorypagelink");
-		
-		for(Element e : elements) {
-			System.out.println(e);
-		}
 
+	}
+
+	@Override
+	public ScoreMetaData getScoreMetaData(int start) {
+		// TODO Auto-generated method stub
+
+		return null;
 	}
 
 }

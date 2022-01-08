@@ -2,23 +2,21 @@ package com.piano.score.domain;
 
 public class ScoreMetaData {
 
-	private Long id;
 	private int start;
 	private int limit;
 	private String sortBy;
 	private String sortDirection;
 	private boolean moreResultAvailable;
-	private Long timeStamp;
+	private long timeStamp;
 	private int version;
 
 	public ScoreMetaData() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScoreMetaData(Long id, int start, int limit, String sortBy, String sortDirection, boolean moreResultAvailable,
-			Long timeStamp, int version) {
+	public ScoreMetaData(int start, int limit, String sortBy, String sortDirection, boolean moreResultAvailable,
+			long timeStamp, int version) {
 		super();
-		this.id = id;
 		this.start = start;
 		this.limit = limit;
 		this.sortBy = sortBy;
@@ -26,14 +24,6 @@ public class ScoreMetaData {
 		this.moreResultAvailable = moreResultAvailable;
 		this.timeStamp = timeStamp;
 		this.version = version;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public int getStart() {
@@ -76,11 +66,11 @@ public class ScoreMetaData {
 		this.moreResultAvailable = moreResultAvailable;
 	}
 
-	public Long getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 
-	public void setTimeStamp(Long timeStamp) {
+	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 

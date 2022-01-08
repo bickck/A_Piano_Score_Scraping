@@ -1,4 +1,8 @@
-package com.piano.score.httpconnection;
+package com.piano.score.siteconnect;
+
+import org.json.simple.JSONObject;
+
+import com.piano.score.domain.ScoreMetaData;
 
 public interface ConnectionUrl {
 
@@ -6,6 +10,6 @@ public interface ConnectionUrl {
 	//List of works: http://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=2/start=0/retformat=<pretty|json|php|wddx>
 	static String defaultUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
 	static String mainUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=/retformat=json";
-
+	
 	
 }

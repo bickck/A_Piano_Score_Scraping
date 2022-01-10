@@ -14,6 +14,13 @@ public class ScoreMetaData {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "ScoreMetaData [start=" + start + ", limit=" + limit + ", sortBy=" + sortBy + ", sortDirection="
+				+ sortDirection + ", moreResultAvailable=" + moreResultAvailable + ", timeStamp=" + timeStamp
+				+ ", version=" + version + "]";
+	}
+
 	public ScoreMetaData(int start, int limit, String sortBy, String sortDirection, boolean moreResultAvailable,
 			long timeStamp, int version) {
 		super();

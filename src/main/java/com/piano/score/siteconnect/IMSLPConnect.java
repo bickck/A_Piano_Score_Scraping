@@ -8,9 +8,8 @@ public interface IMSLPConnect {
 	
 	
 	
-	JSONObject connecting() throws Exception;
+	String connectToIMSLP() throws Exception;
 	
-	ScoreMetaData getScoreMetaData(JSONObject jsonObject) throws Exception;
 
 	String defaultUrlSetting(Integer type, Integer start);
 

@@ -15,6 +15,7 @@ import java.util.function.Function;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -28,11 +29,16 @@ import com.piano.score.domain.ScoreMetaData;
 
 public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
 
-	private String url = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
+	private String testLink = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
 
-	public IMSLPConnectionImpl(String url) {
+	private String link;
+
+	public IMSLPConnectionImpl() {
 		// TODO Auto-generated constructor stub
+	}
 
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	@Override
@@ -43,38 +49,24 @@ public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
 	}
 
 	@Override
-	public JSONObject connecting() throws Exception {
+	public String connectToIMSLP() throws Exception {
 		// TODO Auto-generated method stub
-		URL url = new URL(this.url);
+		URL url = new URL(link);
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+		String result = bufferedReader.readLine();
+
+		return result;
+
+	}
+
+	public String test() throws Exception {
+		// TODO Auto-generated method stub
+		URL url = new URL(testLink);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
 
 		String result = bufferedReader.readLine();
 
-		System.out.println(result.indexOf("metadata"));
-
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
-		JSONObject metadata = (JSONObject) jsonObject.get("metadata");
-
-		System.out.println(metadata.values());
-
-		return jsonObject;
+		return result;
 
 	}
-
-	@Override
-	public ScoreMetaData getScoreMetaData(JSONObject jsonObject) throws Exception {
-		// TODO Auto-generated method stub
-		JSONObject data = (JSONObject) jsonObject.get("metadata");
-
-		if (data.isEmpty()) {
-			return new ScoreMetaData();
-		}
-		Map<String, String> map = (Map) data.clone();
-
-		System.out.println("map :" + map.toString());
-		
-		return new ScoreMetaData();
-	}
-
 }

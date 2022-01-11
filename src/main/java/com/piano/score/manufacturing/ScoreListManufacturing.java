@@ -17,8 +17,6 @@ public class ScoreListManufacturing {
 
 	private String scoreOriginalList;
 
-	private ScoreMetaData data;
-
 	public ScoreListManufacturing() {
 		// TODO Auto-generated constructor stub
 	}
@@ -26,10 +24,6 @@ public class ScoreListManufacturing {
 	public ScoreListManufacturing(String list) {
 		// TODO Auto-generated constructor stub
 		this.scoreOriginalList = list;
-	}
-
-	public ScoreMetaData getMetadata() {
-		return data;
 	}
 
 	public void setScoreOriginalList(String list) {
@@ -42,7 +36,6 @@ public class ScoreListManufacturing {
 
 		Map<String, String> map = (Map) metadata.clone();
 
-		
 		return metaDataParser(map);
 	}
 

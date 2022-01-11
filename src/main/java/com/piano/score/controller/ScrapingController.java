@@ -39,5 +39,11 @@ public class ScrapingController {
 		listManufacturing.scoreListExtract();
 		return "data";
 	}
+	
+	@GetMapping("/requestScoreList")
+	public void requestScoreList() throws Exception {
+		imslpConnect.connectToIMSLP();
+		
+	}
 
 }

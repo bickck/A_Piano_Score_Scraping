@@ -1,8 +1,10 @@
 package com.piano.score.domain;
 
+import java.util.List;
+
 public class ScoreListPage {
 
-	private Score score;
+	private List<Score> score;
 
 	private ScoreMetaData metaData;
 
@@ -10,17 +12,11 @@ public class ScoreListPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScoreListPage(Score score, ScoreMetaData metaData) {
-		super();
-		this.score = score;
-		this.metaData = metaData;
-	}
-
-	public Score getScore() {
+	public List<Score> getScore() {
 		return score;
 	}
 
-	public void setScore(Score score) {
+	public void setScore(List<Score> score) {
 		this.score = score;
 	}
 
@@ -31,4 +27,5 @@ public class ScoreListPage {
 	public void setMetaData(ScoreMetaData metaData) {
 		this.metaData = metaData;
 	}
+
 }

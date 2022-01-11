@@ -33,6 +33,8 @@ public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
 
 	private String link;
 
+	private String result;
+
 	public IMSLPConnectionImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -54,9 +56,18 @@ public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
 		URL url = new URL(link);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
 		String result = bufferedReader.readLine();
+		this.result = result;
 
 		return result;
 
+	}
+
+	@Override
+	public ScoreMetaData metaData() throws ParseException {
+		// TODO Auto-generated method stub
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
+		return null;
 	}
 
 	public String test() throws Exception {

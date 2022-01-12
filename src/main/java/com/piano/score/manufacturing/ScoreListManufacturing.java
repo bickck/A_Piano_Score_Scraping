@@ -9,10 +9,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.domain.Score;
 import com.piano.score.domain.ScoreMetaData;
 
+@Configuration
 public class ScoreListManufacturing {
 
 	private String scoreOriginalList;

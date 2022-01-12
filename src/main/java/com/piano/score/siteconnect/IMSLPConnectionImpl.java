@@ -21,13 +21,21 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.piano.score.domain.ScoreMetaData;
 
-public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
+@Configuration
+public class IMSLPConnectionImpl implements IMSLPConnect {
+
+	// type = 1은 사람
+	// type = 2는 악보
 
 	private String testLink = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
 
@@ -44,40 +52,36 @@ public class IMSLPConnectionImpl implements IMSLPConnect, ConnectionUrl {
 	}
 
 	@Override
-	public String defaultUrlSetting(Integer type, Integer start) {
+	public void defaultUrlSetting(Integer type, Integer start) {
 		// TODO Auto-generated method stub
 		String url = defaultUrl + "sort" + type.toString() + "/type" + start.toString() + "/retformat=json";
-		return url;
+		this.link = url;
 	}
 
 	@Override
 	public String connectToIMSLP() throws Exception {
 		// TODO Auto-generated method stub
-		URL url = new URL(link);
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-		String result = bufferedReader.readLine();
-		this.result = result;
+		if (link != null) {
+			URL url = new URL(link);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+			String result = bufferedReader.readLine();
+			this.result = result;
+		}
 
 		return result;
 
 	}
 
 	@Override
-	public ScoreMetaData metaData() throws ParseException {
+	public boolean moreresultsavailable() throws ParseException {
 		// TODO Auto-generated method stub
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
-		return null;
+
+		JSONObject metadata = (JSONObject) jsonObject.get("metadata");
+		Map<String, String> map = (Map) metadata.clone();
+
+		return Boolean.valueOf(map.get("moreresultsavailable"));
 	}
 
-	public String test() throws Exception {
-		// TODO Auto-generated method stub
-		URL url = new URL(testLink);
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-
-		String result = bufferedReader.readLine();
-
-		return result;
-
-	}
 }

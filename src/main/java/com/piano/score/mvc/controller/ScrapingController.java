@@ -1,4 +1,4 @@
-package com.piano.score.controller;
+package com.piano.score.mvc.controller;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.piano.score.domain.ScoreMetaData;
-import com.piano.score.manufacturing.ScoreListManufacturing;
-import com.piano.score.service.ScoreSiteConnectService;
-import com.piano.score.siteconnect.IMSLPConnect;
-import com.piano.score.siteconnect.IMSLPConnectionImpl;
-import com.piano.score.webscraping.ArtistScraping;
+import com.piano.score.mvc.service.ScoreSiteConnectService;
+import com.piano.score.web.dataprocess.PageDataExtract;
+import com.piano.score.web.netconnect.IMSLPConnect;
+import com.piano.score.web.netconnect.IMSLPConnectionImpl;
+import com.piano.score.web.scraping.ArtistScraping;
 
 @Controller
 public class ScrapingController {

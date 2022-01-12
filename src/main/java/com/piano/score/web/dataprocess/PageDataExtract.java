@@ -1,4 +1,4 @@
-package com.piano.score.manufacturing;
+package com.piano.score.web.dataprocess;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,15 +15,15 @@ import com.piano.score.domain.Score;
 import com.piano.score.domain.ScoreMetaData;
 
 @Configuration
-public class ScoreListManufacturing {
+public class PageDataExtract implements DataExtract {
 
 	private String scoreOriginalList;
 
-	public ScoreListManufacturing() {
+	public PageDataExtract() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScoreListManufacturing(String list) {
+	public PageDataExtract(String list) {
 		// TODO Auto-generated constructor stub
 		this.scoreOriginalList = list;
 	}
@@ -32,8 +32,9 @@ public class ScoreListManufacturing {
 		this.scoreOriginalList = list;
 	}
 
-	// 성공
-	public ScoreMetaData scoreMetaDataExtract() throws Exception {
+	@Override
+	public ScoreMetaData metadataExtract() throws ParseException {
+		// TODO Auto-generated method stub
 		JSONObject metadata = (JSONObject) parser().get("metadata");
 
 		Map<String, String> map = (Map) metadata.clone();
@@ -41,7 +42,9 @@ public class ScoreListManufacturing {
 		return metaDataParser(map);
 	}
 
-	public List<Score> scoreListExtract() throws Exception {
+	@Override
+	public List<Score> dataListExtract() throws ParseException {
+		// TODO Auto-generated method stub
 
 		JSONObject json = (JSONObject) parser().get("0");
 		List<Score> scoreMetaDatas = new ArrayList<Score>();
@@ -81,4 +84,5 @@ public class ScoreListManufacturing {
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(scoreOriginalList);
 		return jsonObject;
 	}
+
 }

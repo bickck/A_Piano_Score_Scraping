@@ -1,4 +1,4 @@
-package com.piano.score.webscraping;
+package com.piano.score.web.scraping;
 
 public class ScoreScrapingImpl implements ScoreScraping{
 

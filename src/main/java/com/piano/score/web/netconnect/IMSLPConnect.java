@@ -1,4 +1,4 @@
-package com.piano.score.siteconnect;
+package com.piano.score.web.netconnect;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;

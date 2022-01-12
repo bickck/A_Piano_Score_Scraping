@@ -1,4 +1,4 @@
-package com.piano.score.webscraping;
+package com.piano.score.web.scraping;
 
 import java.io.IOException;
 

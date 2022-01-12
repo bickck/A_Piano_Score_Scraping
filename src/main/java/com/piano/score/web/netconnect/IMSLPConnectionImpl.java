@@ -1,4 +1,4 @@
-package com.piano.score.siteconnect;
+package com.piano.score.web.netconnect;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

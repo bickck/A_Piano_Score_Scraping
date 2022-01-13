@@ -9,10 +9,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.domain.Score;
 import com.piano.score.domain.ScoreMetaData;
+import com.piano.score.web.netconnect.IMSLPConnect;
 
 @Configuration
 public class PageDataExtract implements DataExtract {
@@ -35,23 +37,28 @@ public class PageDataExtract implements DataExtract {
 	@Override
 	public ScoreMetaData metadataExtract() throws ParseException {
 		// TODO Auto-generated method stub
-		JSONObject metadata = (JSONObject) parser().get("metadata");
+		// JSONObject metadata = (JSONObject) parser().get("metadata");
 
-		Map<String, String> map = (Map) metadata.clone();
+		Map<String, String> map = null; // (Map) metadata.clone();
 
 		return metaDataParser(map);
 	}
 
 	@Override
-	public List<Score> dataListExtract() throws ParseException {
+	public List<Score> dataListExtract(String result) throws ParseException {
 		// TODO Auto-generated method stub
 
-		JSONObject json = (JSONObject) parser().get("0");
 		List<Score> scoreMetaDatas = new ArrayList<Score>();
 
-		for (int i = 0; i < 1000; i++) {
-			json = (JSONObject) parser().get(String.valueOf(i));
-			Map<String, String> map = (Map) json.clone();
+		JSONObject json = (JSONObject) parser(result);
+		System.out.println(json.size());
+
+		System.out.println();
+
+		for (int i = 0; i < json.size(); i++) {
+
+			JSONObject data = (JSONObject) json.get(String.valueOf(i));
+			Map<String, String> map = (Map) data.clone();
 
 			String id = String.valueOf(map.get("id"));
 			String type = String.valueOf(map.get("type"));
@@ -61,7 +68,7 @@ public class PageDataExtract implements DataExtract {
 
 			scoreMetaDatas.add(new Score(Long.valueOf(i), id, type, parent, intvals, permlink));
 		}
-
+		System.out.println(scoreMetaDatas.size());
 		return scoreMetaDatas;
 	}
 
@@ -79,9 +86,9 @@ public class PageDataExtract implements DataExtract {
 				Boolean.valueOf(moreseltsavilable), Long.valueOf(timestamp), Integer.valueOf(apiversion));
 	}
 
-	private JSONObject parser() throws ParseException {
+	private JSONObject parser(String datas) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(scoreOriginalList);
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(datas);
 		return jsonObject;
 	}
 

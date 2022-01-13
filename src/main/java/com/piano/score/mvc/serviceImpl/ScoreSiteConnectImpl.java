@@ -27,13 +27,13 @@ public class ScoreSiteConnectImpl implements ScoreSiteConnectService {
 		boolean isCheck = true;
 
 		while (isCheck) {
-			connect.defaultUrlSetting(1, i++);
+			connect.typeAndStartUrlSetting(1, i);
 			try {
-				String result = connect.connectToIMSLP();
+				String result = connect.connectToIMSLP(null);
 
 				if (connect.moreresultsavailable()) {
 					pageDataExtract.setScoreOriginalList(result);
-					List<Score> list = pageDataExtract.dataListExtract();
+					List<Score> list = pageDataExtract.dataListExtract(result);
 				} else {
 					isCheck = false;
 				}

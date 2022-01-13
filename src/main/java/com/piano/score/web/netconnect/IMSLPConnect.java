@@ -13,10 +13,13 @@ public interface IMSLPConnect {
 	// http://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=2/start=0/retformat=<pretty|json|php|wddx>
 	static String defaultUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
 	static String mainUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=/retformat=json";
+	static String typeAndStartUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
 
-	String connectToIMSLP() throws Exception;
+	String connectToIMSLP(String url) throws Exception;
 
-	void defaultUrlSetting(Integer type, Integer start);
+	String defaultUrlSetting(String sort, Integer type, Integer start);
+
+	String typeAndStartUrlSetting(Integer type, Integer start);
 
 	boolean moreresultsavailable() throws ParseException;
 

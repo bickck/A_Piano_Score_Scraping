@@ -39,37 +39,40 @@ public class IMSLPConnectionImpl implements IMSLPConnect {
 
 	private String testLink = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
 
-	private String link;
-
 	private String result;
 
 	public IMSLPConnectionImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	@Override
+	public String defaultUrlSetting(String sort, Integer type, Integer start) {
+		// TODO Auto-generated method stub
+		String url = defaultUrl + "sort=" + sort + "/type=" + type.toString() + "/start=" + start.toString()
+				+ "/retformat=json";
+		return url;
 	}
 
 	@Override
-	public void defaultUrlSetting(Integer type, Integer start) {
+	public String typeAndStartUrlSetting(Integer type, Integer start) {
 		// TODO Auto-generated method stub
-		String url = defaultUrl + "sort" + type.toString() + "/type" + start.toString() + "/retformat=json";
-		this.link = url;
+		String url = typeAndStartUrl + "sort=id/type=" + type.toString() + "/start=" + start.toString()
+				+ "/retformat=json";
+		return url;
 	}
 
 	@Override
-	public String connectToIMSLP() throws Exception {
+	public String connectToIMSLP(String url) throws Exception {
 		// TODO Auto-generated method stub
-		if (link != null) {
-			URL url = new URL(link);
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+
+		if (url != null) {
+			URL link = new URL(url);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(link.openStream(), "UTF-8"));
 			String result = bufferedReader.readLine();
 			this.result = result;
 		}
 
 		return result;
-
 	}
 
 	@Override

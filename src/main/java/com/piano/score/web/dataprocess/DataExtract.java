@@ -8,9 +8,9 @@ import com.piano.score.domain.Score;
 import com.piano.score.domain.ScoreMetaData;
 
 public interface DataExtract {
-	
+
 	ScoreMetaData metadataExtract() throws ParseException;
-	
-	List<Score> dataListExtract() throws ParseException;
+
+	List<Score> dataListExtract(String result) throws ParseException;
 
 }

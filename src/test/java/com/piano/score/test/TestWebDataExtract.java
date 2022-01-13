@@ -1,0 +1,96 @@
+package com.piano.score.test;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.piano.score.domain.Score;
+import com.piano.score.web.dataprocess.PageDataExtract;
+import com.piano.score.web.netconnect.IMSLPConnect;
+import com.piano.score.web.netconnect.IMSLPConnectionImpl;
+
+@SpringBootTest
+public class TestWebDataExtract {
+
+	@Test
+	public void allWebDataCountTest() {
+
+	}
+
+	public void defaultUrlTest() {
+		IMSLPConnect connect = new IMSLPConnectionImpl();
+
+		String url = connect.defaultUrlSetting("id", 1, 0);
+
+		// System.out.println("defaultUrlTest : " + url);
+
+	}
+
+	public void typeAndStartUrlSetting() {
+		IMSLPConnect connect = new IMSLPConnectionImpl();
+
+		String url = connect.typeAndStartUrlSetting(1, 100000);
+
+		// System.out.println("typeAndStartUrlSetting : " + url);
+
+	}
+
+	public void connectTest() throws Exception {
+		IMSLPConnect connect = new IMSLPConnectionImpl();
+		String url = connect.typeAndStartUrlSetting(1, 100000);
+		String test = connect.connectToIMSLP(url);
+		// System.out.println(test.length());
+		// assertNotNull(test);
+		// 148336 148334
+	}
+
+	public void jsonMapKeyTest() throws Exception {
+		IMSLPConnect connect = new IMSLPConnectionImpl();
+		String url = connect.typeAndStartUrlSetting(1, 100000);
+		String result = connect.connectToIMSLP(url);
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
+
+		System.out.println("json Size" + jsonObject.size());
+
+	}
+
+	@Test
+	public void dataListExtractTest() throws Exception {
+		IMSLPConnect connect = new IMSLPConnectionImpl();
+		String url = connect.typeAndStartUrlSetting(1, 0);
+		String result = connect.connectToIMSLP(url);
+		PageDataExtract dataExtract = new PageDataExtract();
+
+		List<Score> lists = dataExtract.dataListExtract(result);
+		
+		System.out.println("lists : " + lists.size());
+
+	}
+
+	public void dataListCount() {
+		IMSLPConnect connect = new IMSLPConnectionImpl();
+		String url = connect.typeAndStartUrlSetting(1, 0);
+		PageDataExtract dataExtract = new PageDataExtract();
+
+		try {
+
+			String result = connect.connectToIMSLP(url);
+
+			List<Score> lists = dataExtract.dataListExtract(result);
+			System.out.println(lists.size());
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.piano.score.domain.Score;
 import com.piano.score.web.dataprocess.PageDataExtract;
+import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
 
@@ -55,15 +56,15 @@ public class TestWebDataExtract {
 	public void jsonMapKeyTest() throws Exception {
 		IMSLPConnect connect = new IMSLPConnectionImpl();
 		String url = connect.typeAndStartUrlSetting(1, 100000);
-		String result = connect.connectToIMSLP(url);
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
 
-		System.out.println("json Size" + jsonObject.size());
+		Long start = System.currentTimeMillis();
+		String result = connect.connectToIMSLP(url);
+		Long end = System.currentTimeMillis();
+
+		System.out.println("Time" + " : " + (end - start) / 1000 + "초");
 
 	}
 
-	@Test
 	public void dataListExtractTest() throws Exception {
 		IMSLPConnect connect = new IMSLPConnectionImpl();
 		String url = connect.typeAndStartUrlSetting(1, 0);
@@ -71,7 +72,7 @@ public class TestWebDataExtract {
 		PageDataExtract dataExtract = new PageDataExtract();
 
 		List<Score> lists = dataExtract.dataListExtract(result);
-		
+
 		System.out.println("lists : " + lists.size());
 
 	}
@@ -92,5 +93,14 @@ public class TestWebDataExtract {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void allWebDataCount() {
+		WebDataExtract dataExtract = new WebDataExtract();
+
+		
+		int size = dataExtract.allWebDataCount(1);
+		System.out.println(size);
 	}
 }

@@ -45,6 +45,12 @@ public class PageDataExtract implements DataExtract {
 	}
 
 	@Override
+	public int pageDataSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public List<Score> dataListExtract(String result) throws ParseException {
 		// TODO Auto-generated method stub
 
@@ -59,6 +65,7 @@ public class PageDataExtract implements DataExtract {
 
 			JSONObject data = (JSONObject) json.get(String.valueOf(i));
 			Map<String, String> map = (Map) data.clone();
+			
 
 			String id = String.valueOf(map.get("id"));
 			String type = String.valueOf(map.get("type"));
@@ -89,6 +96,7 @@ public class PageDataExtract implements DataExtract {
 	private JSONObject parser(String datas) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(datas);
+		
 		return jsonObject;
 	}
 

@@ -13,6 +13,6 @@ public class PageSection {
 	@Id
 	private Long id;
 	
-	@Column(name ="list")
-	private ScoreListPage listPage;
+	//@Column(name ="list")
+	//private ScoreListPage listPage;
 }

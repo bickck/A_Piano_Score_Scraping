@@ -53,7 +53,7 @@ public class DataExtractParser {
 			String intvals = String.valueOf(map.get("intvals"));
 			String permlink = String.valueOf(map.get("permlink"));
 
-			scoreMetaDatas.add(new Score(Long.valueOf(i), id, type, parent, intvals, permlink));
+			scoreMetaDatas.add(new Score(id, type, parent, intvals, permlink));
 
 		}
 		return scoreMetaDatas;

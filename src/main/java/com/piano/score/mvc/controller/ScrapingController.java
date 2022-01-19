@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.piano.score.domain.ScoreMetaData;
-import com.piano.score.mvc.service.ScoreSiteConnectService;
+import com.piano.score.mvc.service.ScoreDataService;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
@@ -20,7 +20,7 @@ public class ScrapingController {
 
 	
 	@Autowired
-	private ScoreSiteConnectService siteConnectService;
+	private ScoreDataService siteConnectService;
 
 	
 	@GetMapping("/requestAllScoreList")

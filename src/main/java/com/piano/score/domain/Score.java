@@ -1,47 +1,54 @@
 package com.piano.score.domain;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Score {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String scoreId;
+	@Column(name = "PAGE_ID")
+	private String pageId;
 
+	@Column(name = "TYPE")
 	private String type;
 
+	@Column(name = "PARENT")
 	private String parent;
 
+	@Column(name = "INTVALS")
 	private String intvals;
 
+	@Column(name = "PERMLINK")
 	private String permlink;
 
 	public Score() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Score(Long id, String scoreId, String type, String parent, String intvals, String permlink) {
+	public Score(String pageId, String type, String parent, String intvals, String permlink) {
 		super();
-		this.id = id;
-		this.scoreId = scoreId;
+
+		this.pageId = pageId;
 		this.type = type;
 		this.parent = parent;
 		this.intvals = intvals;
 		this.permlink = permlink;
 	}
 
-	public Long getId() {
-		return id;
+	public String getPageId() {
+		return pageId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getScoreId() {
-		return scoreId;
-	}
-
-	public void setScoreId(String scoreId) {
-		this.scoreId = scoreId;
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
 	}
 
 	public String getType() {

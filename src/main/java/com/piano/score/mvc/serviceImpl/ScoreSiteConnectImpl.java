@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.piano.score.domain.Score;
 import com.piano.score.domain.ScoreListPage;
 import com.piano.score.domain.ScoreMetaData;
+import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.service.ScoreSiteConnectService;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.netconnect.IMSLPConnect;
@@ -17,6 +18,9 @@ public class ScoreSiteConnectImpl implements ScoreSiteConnectService {
 
 	@Autowired
 	private IMSLPConnect connect;
+	
+	@Autowired
+	private ScoreRepository repository;
 
 	@Override
 	public ScoreListPage connect() {
@@ -25,9 +29,10 @@ public class ScoreSiteConnectImpl implements ScoreSiteConnectService {
 		boolean isCheck = true;
 
 		while (isCheck) {
-			connect.typeAndStartUrlSetting(1, i);
+			String url = connect.typeAndStartUrlSetting(1, i);
 			try {
-				String result = connect.connectToIMSLP(null);
+				
+				String result = connect.connectToIMSLP(url);
 
 				if (connect.moreresultsavailable()) {
 					// pageDataExtract.setScoreOriginalList(result);
@@ -45,7 +50,7 @@ public class ScoreSiteConnectImpl implements ScoreSiteConnectService {
 	}
 
 	@Override
-	public int DataCount() {
+	public int dataCount(int type) {
 		// TODO Auto-generated method stub
 
 		try {

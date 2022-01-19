@@ -8,6 +8,6 @@ public interface ScoreSiteConnectService {
 
 	ScoreListPage connect();
 
-	int DataCount();
+	int dataCount(int type);
 
 }

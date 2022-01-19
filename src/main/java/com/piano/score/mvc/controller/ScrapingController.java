@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.piano.score.domain.ScoreMetaData;
 import com.piano.score.mvc.service.ScoreSiteConnectService;
-import com.piano.score.web.dataprocess.PageDataExtract;
+import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
 import com.piano.score.web.scraping.ArtistScraping;

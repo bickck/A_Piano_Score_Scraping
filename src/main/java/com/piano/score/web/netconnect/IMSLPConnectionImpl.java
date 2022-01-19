@@ -45,6 +45,7 @@ public class IMSLPConnectionImpl implements IMSLPConnect {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	@Override
 	public String defaultUrlSetting(String sort, Integer type, Integer start) {
 		// TODO Auto-generated method stub

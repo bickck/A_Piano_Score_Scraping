@@ -13,12 +13,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.piano.score.domain.Score;
-import com.piano.score.web.dataprocess.PageDataExtract;
+import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
 
-@SpringBootTest
 public class TestWebDataExtract {
 
 	@Test
@@ -69,25 +68,25 @@ public class TestWebDataExtract {
 		IMSLPConnect connect = new IMSLPConnectionImpl();
 		String url = connect.typeAndStartUrlSetting(1, 0);
 		String result = connect.connectToIMSLP(url);
-		PageDataExtract dataExtract = new PageDataExtract();
+		// DataExtractParser dataExtract = new DataExtractParser();
 
-		List<Score> lists = dataExtract.dataListExtract(result);
+		// List<Score> lists = dataExtract.dataListExtract(result);
 
-		System.out.println("lists : " + lists.size());
+		// System.out.println("lists : " + lists.size());
 
 	}
 
 	public void dataListCount() {
 		IMSLPConnect connect = new IMSLPConnectionImpl();
 		String url = connect.typeAndStartUrlSetting(1, 0);
-		PageDataExtract dataExtract = new PageDataExtract();
+		// DataExtractParser dataExtract = new DataExtractParser();
 
 		try {
 
 			String result = connect.connectToIMSLP(url);
 
-			List<Score> lists = dataExtract.dataListExtract(result);
-			System.out.println(lists.size());
+			// List<Score> lists = dataExtract.dataListExtract(result);
+			// System.out.println(lists.size());
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -99,7 +98,6 @@ public class TestWebDataExtract {
 	public void allWebDataCount() {
 		WebDataExtract dataExtract = new WebDataExtract();
 
-		
 		int size = dataExtract.allWebDataCount(1);
 		System.out.println(size);
 	}

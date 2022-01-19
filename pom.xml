@@ -32,11 +32,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20211205</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
 		<dependency>

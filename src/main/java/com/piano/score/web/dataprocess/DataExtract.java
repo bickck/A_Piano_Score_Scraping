@@ -12,7 +12,5 @@ public interface DataExtract {
 	ScoreMetaData metadataExtract() throws ParseException;
 
 	List<Score> dataListExtract(String result) throws ParseException;
-	
-	int pageDataSize();
 
 }

@@ -2,10 +2,12 @@ package com.piano.score.mvc.service;
 
 import org.springframework.stereotype.Service;
 
+import com.piano.score.domain.ScoreListPage;
+
 public interface ScoreSiteConnectService {
 
-	void connect();
+	ScoreListPage connect();
 
-	int typeDataCount();
+	int DataCount();
 
 }

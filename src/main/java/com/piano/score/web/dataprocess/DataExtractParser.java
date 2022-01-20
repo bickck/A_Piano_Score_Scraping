@@ -59,6 +59,11 @@ public class DataExtractParser {
 		return scoreMetaDatas;
 	}
 
+	public int dataSize() {
+		int size = jsonObject.size();
+		return size;
+	}
+
 	private ScoreMetaData metaDataParser(Map<String, String> map) {
 
 		String start = String.valueOf(map.get("start"));

@@ -55,29 +55,12 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		return null;
 	}
 
-	BaseInformation baseInformation = baseInfoRepository.getById((long) 1);
-
 	@Override
-	public int typeOneAllCount() throws Exception {
+	public int typeDataPageCount(int type) throws Exception {
 		// TODO Auto-generated method stub
-		int dbTypeOneData = baseInformation.getTypeOneCount();
+		int result = typeReturn((long) type);
 
-		if (dbTypeOneData == 0) {
-			int result = count_function(1);
-			return 0;
-		}
-		return dbTypeOneData;
-	}
-
-	@Override
-	public int typeTwoAllCount() throws Exception {
-		// TODO Auto-generated method stub
-		int dbTypeTwoData = baseInformation.getTypeTwoCount();
-		if (dbTypeTwoData == 0) {
-			int result = count_function(2);
-			return result;
-		}
-		return dbTypeTwoData;
+		return result;
 	}
 
 	@Override
@@ -92,8 +75,27 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		return null;
 	}
 
+	private int typeReturn(Long type) throws Exception {
+		BaseInformation baseInformation = baseInfoRepository.getById(type);
+		if (type == 1) {
+			if (baseInformation.getTypeOneCount() == 0) {
+				int result = count_function(1);
+				return result;
+			}
+			return baseInformation.getTypeOneCount();
+		}
+		if (type == 2) {
+			if (baseInformation.getTypeTwoCount() == 0) {
+				int result = count_function(2);
+				return result;
+			}
+			return baseInformation.getTypeTwoCount();
+		}
+		return -1;
+	}
+
 	private int count_function(int type) throws Exception {
-		int result = 0, start = 0, end = 0;
+		int start = 0, end = 0, endData = 0;
 		boolean isCheck = true;
 		// 탐색 알고리즘
 
@@ -112,17 +114,30 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 			}
 		}
 
+		isCheck = true;
+
 		while (isCheck) {
-			int middle = (end + start) / 2;
 
-			if (middle == 0) {
+			int mid = (end + start) / 2;
+			String url = connect.typeAndStartUrlSetting(1, end);
+			String data = connect.connectToIMSLP(url);
+			DataExtractParser dataExtractParser = new DataExtractParser(data);
+			if (dataExtractParser.dataSize() == 1) {
+				end = mid;
+			} else if (dataExtractParser.dataSize() > 1000) {
+				start = mid;
+			} else {
+				end = mid;
+				url = connect.typeAndStartUrlSetting(1, end);
+				data = connect.connectToIMSLP(url);
+				dataExtractParser = new DataExtractParser(data);
+				endData = dataExtractParser.dataSize();
+				isCheck = false;
 			}
-
 		}
-
 		Long EndTime = System.currentTimeMillis();
 
-		return result;
+		return ((end - 1) * 1000) + endData;
 	}
 
 }

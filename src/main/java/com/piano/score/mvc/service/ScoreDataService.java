@@ -11,9 +11,8 @@ public interface ScoreDataService {
 
 	ScoreListPage connect();
 
-	int typeOneAllCount() throws Exception;
-
-	int typeTwoAllCount() throws Exception;
+	
+	int typeDataPageCount(int type) throws Exception;
 
 	Score findScoreList(String reqScoreName);
 

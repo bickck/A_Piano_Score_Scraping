@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.piano.score.domain.Score;
 import com.piano.score.domain.ScoreMetaData;
+import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
@@ -22,7 +23,7 @@ public class TestDataExtractPaser {
 
 	private String testURL = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=1/retformat=json";
 
-	@Test
+	
 	public void test() throws Exception {
 		IMSLPConnect connect = new IMSLPConnectionImpl();
 
@@ -52,4 +53,12 @@ public class TestDataExtractPaser {
 
 	}
 
+	@Test
+	public void typeDataPageCount() throws Exception {
+		
+
+		ScoreSiteConnectImpl connectImpl = new ScoreSiteConnectImpl();
+
+		System.out.println(connectImpl.count_function(1));
+	}
 }

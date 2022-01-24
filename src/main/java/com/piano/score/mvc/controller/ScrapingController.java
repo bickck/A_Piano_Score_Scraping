@@ -18,18 +18,16 @@ import com.piano.score.web.scraping.ArtistScraping;
 @Controller
 public class ScrapingController {
 
-	
 	@Autowired
 	private ScoreDataService siteConnectService;
 
-	
 	@GetMapping("/requestAllScoreList")
 	public void requestScoreList() throws Exception {
-		
-		//테스트 먼저
-		
-		
-		
+
+		// 테스트 먼저
+		int result = siteConnectService.count_function(1);
+		System.out.println(result);
+
 	}
 
 }

@@ -11,11 +11,12 @@ public interface ScoreDataService {
 
 	ScoreListPage connect();
 
-	
 	int typeDataPageCount(int type) throws Exception;
 
 	Score findScoreList(String reqScoreName);
 
 	List<Score> lists();
+
+	int count_function(int type) throws Exception;
 
 }

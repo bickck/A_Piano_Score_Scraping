@@ -37,7 +37,8 @@ public class IMSLPConnectionImpl implements IMSLPConnect {
 	// type = 1은 사람
 	// type = 2는 악보
 
-	private String testLink = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
+	// private String testLink =
+	// "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
 
 	private String result;
 
@@ -45,7 +46,6 @@ public class IMSLPConnectionImpl implements IMSLPConnect {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	@Override
 	public String defaultUrlSetting(String sort, Integer type, Integer start) {
 		// TODO Auto-generated method stub

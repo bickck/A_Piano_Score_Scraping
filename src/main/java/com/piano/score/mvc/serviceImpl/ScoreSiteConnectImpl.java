@@ -94,7 +94,7 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		return -1;
 	}
 
-	private int count_function(int type) throws Exception {
+	public int count_function(int type) throws Exception {
 		int start = 0, end = 0, endData = 0;
 		boolean isCheck = true;
 		// 탐색 알고리즘
@@ -103,7 +103,7 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 
 		while (isCheck) {
 
-			String url = connect.typeAndStartUrlSetting(1, end);
+			String url = connect.typeAndStartUrlSetting(type, end);
 			String data = connect.connectToIMSLP(url);
 			DataExtractParser dataExtractParser = new DataExtractParser(data);
 
@@ -119,14 +119,18 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		while (isCheck) {
 
 			int mid = (end + start) / 2;
-			String url = connect.typeAndStartUrlSetting(1, end);
+
+			String url = connect.typeAndStartUrlSetting(1, mid);
 			String data = connect.connectToIMSLP(url);
 			DataExtractParser dataExtractParser = new DataExtractParser(data);
+
 			if (dataExtractParser.dataSize() == 1) {
 				end = mid;
-			} else if (dataExtractParser.dataSize() > 1000) {
+			}
+			if (dataExtractParser.dataSize() > 1000) {
 				start = mid;
-			} else {
+			}
+			if (dataExtractParser.dataSize() < 1000 && dataExtractParser.dataSize() > 1) {
 				end = mid;
 				url = connect.typeAndStartUrlSetting(1, end);
 				data = connect.connectToIMSLP(url);
@@ -136,6 +140,8 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 			}
 		}
 		Long EndTime = System.currentTimeMillis();
+
+		System.out.println("time : " + (EndTime - StartTime) / 1000 + "초");
 
 		return ((end - 1) * 1000) + endData;
 	}

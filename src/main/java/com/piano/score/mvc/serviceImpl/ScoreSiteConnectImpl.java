@@ -13,6 +13,7 @@ import com.piano.score.domain.ScoreMetaData;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.service.ScoreDataService;
+import com.piano.score.web.dataprocess.DataExtract;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.netconnect.IMSLPConnect;
 
@@ -28,37 +29,32 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	@Autowired
 	private BaseInfoRepository baseInfoRepository;
 
+	@Autowired
+	private DataExtract dataExtract;
+
+	@Override
+	public void connectTest() throws ParseException {
+		// TODO Auto-generated method stub
+		String url = connect.typeAndStartUrlSetting(1, 1);
+		DataExtractParser dataExtractParser = new DataExtractParser(url);
+
+		List<Score> lists = dataExtractParser.dataListExtract();
+
+	}
+
 	@Override
 	public ScoreListPage connect() {
 		// TODO Auto-generated method stub
 		int i = 0;
 		boolean isCheck = true;
 
-		while (isCheck) {
-			String url = connect.typeAndStartUrlSetting(1, i);
-			try {
-
-				String result = connect.connectToIMSLP(url);
-
-				if (connect.moreresultsavailable()) {
-					// pageDataExtract.setScoreOriginalList(result);
-					// List<Score> list = pageDataExtract.dataListExtract(result);
-				} else {
-					isCheck = false;
-				}
-
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return null;
 	}
 
 	@Override
 	public int typeDataPageCount(int type) throws Exception {
 		// TODO Auto-generated method stub
-		int result = typeReturn((long) type);
+		int result = 0;
 
 		return result;
 	}
@@ -73,77 +69,6 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	public List<Score> lists() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	private int typeReturn(Long type) throws Exception {
-		BaseInformation baseInformation = baseInfoRepository.getById(type);
-		if (type == 1) {
-			if (baseInformation.getTypeOneCount() == 0) {
-				int result = count_function(1);
-				return result;
-			}
-			return baseInformation.getTypeOneCount();
-		}
-		if (type == 2) {
-			if (baseInformation.getTypeTwoCount() == 0) {
-				int result = count_function(2);
-				return result;
-			}
-			return baseInformation.getTypeTwoCount();
-		}
-		return -1;
-	}
-
-	public int count_function(int type) throws Exception {
-		int start = 0, end = 0, endData = 0;
-		boolean isCheck = true;
-		// 탐색 알고리즘
-
-		Long StartTime = System.currentTimeMillis();
-
-		while (isCheck) {
-
-			String url = connect.typeAndStartUrlSetting(type, end);
-			String data = connect.connectToIMSLP(url);
-			DataExtractParser dataExtractParser = new DataExtractParser(data);
-
-			if (dataExtractParser.metadataExtract().isMoreResultAvailable()) {
-				end += 10000;
-			} else {
-				isCheck = false;
-			}
-		}
-
-		isCheck = true;
-
-		while (isCheck) {
-
-			int mid = (end + start) / 2;
-
-			String url = connect.typeAndStartUrlSetting(1, mid);
-			String data = connect.connectToIMSLP(url);
-			DataExtractParser dataExtractParser = new DataExtractParser(data);
-
-			if (dataExtractParser.dataSize() == 1) {
-				end = mid;
-			}
-			if (dataExtractParser.dataSize() > 1000) {
-				start = mid;
-			}
-			if (dataExtractParser.dataSize() < 1000 && dataExtractParser.dataSize() > 1) {
-				end = mid;
-				url = connect.typeAndStartUrlSetting(1, end);
-				data = connect.connectToIMSLP(url);
-				dataExtractParser = new DataExtractParser(data);
-				endData = dataExtractParser.dataSize();
-				isCheck = false;
-			}
-		}
-		Long EndTime = System.currentTimeMillis();
-
-		System.out.println("time : " + (EndTime - StartTime) / 1000 + "초");
-
-		return ((end - 1) * 1000) + endData;
 	}
 
 }

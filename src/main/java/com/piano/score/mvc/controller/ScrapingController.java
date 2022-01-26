@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.piano.score.domain.ScoreMetaData;
 import com.piano.score.mvc.service.ScoreDataService;
-import com.piano.score.web.dataprocess.DataExtractParser;
-import com.piano.score.web.netconnect.IMSLPConnect;
-import com.piano.score.web.netconnect.IMSLPConnectionImpl;
-import com.piano.score.web.scraping.ArtistScraping;
 
 @Controller
 public class ScrapingController {
@@ -23,10 +19,6 @@ public class ScrapingController {
 
 	@GetMapping("/requestAllScoreList")
 	public void requestScoreList() throws Exception {
-
-		// 테스트 먼저
-		int result = siteConnectService.count_function(1);
-		System.out.println(result);
 
 	}
 

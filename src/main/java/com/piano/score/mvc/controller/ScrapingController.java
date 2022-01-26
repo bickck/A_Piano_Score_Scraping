@@ -19,7 +19,7 @@ public class ScrapingController {
 
 	@GetMapping("/requestAllScoreList")
 	public void requestScoreList() throws Exception {
-
+		siteConnectService.connect();
 	}
 
 }

@@ -39,6 +39,7 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		DataExtractParser dataExtractParser = new DataExtractParser(url);
 
 		List<Score> lists = dataExtractParser.dataListExtract();
+		
 
 	}
 

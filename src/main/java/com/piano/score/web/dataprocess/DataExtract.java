@@ -13,6 +13,13 @@ public interface DataExtract {
 
 	List<Score> dataListExtract(String lists) throws ParseException;
 
-	public int allWebDataCount(int type);
+	int allWebDataCount(int type);
+	
+	void webAllDataCollect();
+	
+	void typeOneData();
+	
+	void typeTwoData();
+	
 
 }

@@ -59,6 +59,6 @@ public class TestDataExtractPaser {
 
 		ScoreSiteConnectImpl connectImpl = new ScoreSiteConnectImpl();
 
-		System.out.println(connectImpl.count_function(1));
+		//System.out.println(connectImpl.count_function(1));
 	}
 }

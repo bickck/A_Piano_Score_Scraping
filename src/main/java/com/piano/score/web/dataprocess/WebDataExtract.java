@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.domain.BaseInformation;
-import com.piano.score.domain.PageScoreList;
-import com.piano.score.domain.ScoreListPage;
-import com.piano.score.domain.PageMetaData;
+import com.piano.score.mvc.domain.PageMetaData;
+import com.piano.score.mvc.domain.PageScoreList;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;

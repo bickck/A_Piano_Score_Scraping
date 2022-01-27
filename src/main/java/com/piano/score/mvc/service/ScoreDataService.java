@@ -5,8 +5,7 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.piano.score.domain.PageScoreList;
-import com.piano.score.domain.ScoreListPage;
+import com.piano.score.mvc.domain.PageScoreList;
 
 public interface ScoreDataService {
 

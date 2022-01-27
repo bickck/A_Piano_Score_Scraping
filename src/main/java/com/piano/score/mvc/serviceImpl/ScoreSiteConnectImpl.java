@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.piano.score.domain.BaseInformation;
-import com.piano.score.domain.PageScoreList;
-import com.piano.score.domain.ScoreListPage;
-import com.piano.score.domain.PageMetaData;
+import com.piano.score.mvc.domain.PageMetaData;
+import com.piano.score.mvc.domain.PageScoreList;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.service.ScoreDataService;

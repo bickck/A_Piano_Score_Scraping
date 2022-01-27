@@ -11,8 +11,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.domain.PageScoreList;
-import com.piano.score.domain.PageMetaData;
+import com.piano.score.mvc.domain.PageMetaData;
+import com.piano.score.mvc.domain.PageScoreList;
 
 public class DataExtractParser {
 

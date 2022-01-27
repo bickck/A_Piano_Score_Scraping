@@ -4,27 +4,27 @@ import java.util.List;
 
 public class ScoreListPage {
 
-	private List<MusicScore> score;
+	private List<PageScoreList> score;
 
-	private ScoreMetaData metaData;
+	private PageMetaData metaData;
 
 	public ScoreListPage() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<MusicScore> getScore() {
+	public List<PageScoreList> getScore() {
 		return score;
 	}
 
-	public void setScore(List<MusicScore> score) {
+	public void setScore(List<PageScoreList> score) {
 		this.score = score;
 	}
 
-	public ScoreMetaData getMetaData() {
+	public PageMetaData getMetaData() {
 		return metaData;
 	}
 
-	public void setMetaData(ScoreMetaData metaData) {
+	public void setMetaData(PageMetaData metaData) {
 		this.metaData = metaData;
 	}
 

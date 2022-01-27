@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.domain.MusicScore;
+import com.piano.score.domain.PageScoreList;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.IMSLPConnect;

@@ -29,7 +29,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.piano.score.domain.ScoreMetaData;
+import com.piano.score.domain.PageMetaData;
 
 @Configuration
 public class IMSLPConnectionImpl implements IMSLPConnect {

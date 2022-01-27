@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.domain.BaseInformation;
-import com.piano.score.domain.MusicScore;
+import com.piano.score.domain.PageScoreList;
 import com.piano.score.domain.ScoreListPage;
-import com.piano.score.domain.ScoreMetaData;
+import com.piano.score.domain.PageMetaData;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
@@ -27,7 +27,7 @@ public class WebDataExtract implements DataExtract {
 	}
 
 	@Override
-	public List<MusicScore> dataListExtract(String lists) throws ParseException {
+	public List<PageScoreList> dataListExtract(String lists) throws ParseException {
 		// TODO Auto-generated method stub
 		DataExtractParser dataExtractParser = new DataExtractParser(lists);
 
@@ -35,7 +35,7 @@ public class WebDataExtract implements DataExtract {
 	}
 
 	@Override
-	public ScoreMetaData metadataExtract(String lists) throws ParseException {
+	public PageMetaData metadataExtract(String lists) throws ParseException {
 		// TODO Auto-generated method stub
 		DataExtractParser dataExtractParser = new DataExtractParser(lists);
 

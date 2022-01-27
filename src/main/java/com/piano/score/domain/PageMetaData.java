@@ -1,6 +1,6 @@
 package com.piano.score.domain;
 
-public class ScoreMetaData {
+public class PageMetaData {
 
 	private int start;
 	private int limit;
@@ -10,7 +10,7 @@ public class ScoreMetaData {
 	private long timeStamp;
 	private int version;
 
-	public ScoreMetaData() {
+	public PageMetaData() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -21,7 +21,7 @@ public class ScoreMetaData {
 				+ ", version=" + version + "]";
 	}
 
-	public ScoreMetaData(int start, int limit, String sortBy, String sortDirection, boolean moreResultAvailable,
+	public PageMetaData(int start, int limit, String sortBy, String sortDirection, boolean moreResultAvailable,
 			long timeStamp, int version) {
 		super();
 		this.start = start;

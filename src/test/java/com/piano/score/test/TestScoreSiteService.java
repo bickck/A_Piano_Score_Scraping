@@ -20,7 +20,7 @@ public class TestScoreSiteService {
 	public void BaseInfoTest() {
 		long l = 1;
 		
-		baseInfoRepository.save(new BaseInformation(0,0));
+		//baseInfoRepository.save(new BaseInformation(0,0));
 		
 		List<BaseInformation> lists = baseInfoRepository.findAll();
 		long i = baseInfoRepository.count();

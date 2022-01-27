@@ -4,22 +4,18 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.domain.ScoreMetaData;
 
 public interface DataExtract {
 
 	ScoreMetaData metadataExtract(String lists) throws ParseException;
 
-	List<Score> dataListExtract(String lists) throws ParseException;
+	List<MusicScore> dataListExtract(String lists) throws ParseException;
 
-	int allWebDataCount(int type);
+	Long typeOneWebDataCount();
 	
-	void webAllDataCollect();
+	Long typeTwoWebDataCount();
 	
-	void typeOneData();
 	
-	void typeTwoData();
-	
-
 }

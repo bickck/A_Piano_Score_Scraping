@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ScoreListPage {
 
-	private List<Score> score;
+	private List<MusicScore> score;
 
 	private ScoreMetaData metaData;
 
@@ -12,11 +12,11 @@ public class ScoreListPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Score> getScore() {
+	public List<MusicScore> getScore() {
 		return score;
 	}
 
-	public void setScore(List<Score> score) {
+	public void setScore(List<MusicScore> score) {
 		this.score = score;
 	}
 

@@ -5,18 +5,16 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.domain.ScoreListPage;
 
 public interface ScoreDataService {
 
-	ScoreListPage connect();
+	Long typeOneDataCount() throws Exception;
 
-	int typeDataPageCount(int type) throws Exception;
+	Long typeTwoDataCount() throws Exception;
 
-	Score findScoreList(String reqScoreName);
-
-	List<Score> lists();
+	void allWebDataCollect();
 
 	void connectTest() throws ParseException;
 

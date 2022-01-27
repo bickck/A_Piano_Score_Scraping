@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.domain.ScoreMetaData;
 
 public class DataExtractParser {
@@ -37,15 +37,17 @@ public class DataExtractParser {
 		return metaDataParser(map);
 	}
 
-	public List<Score> dataListExtract() throws ParseException {
+	public List<MusicScore> dataListExtract() throws ParseException {
 		// TODO Auto-generated method stub
 
-		List<Score> scoreMetaDatas = new ArrayList<Score>();
+		List<MusicScore> scoreMetaDatas = new ArrayList<MusicScore>();
 
 		for (int i = 0; i < jsonObject.size() - 1; i++) {
 			JSONObject data = (JSONObject) jsonObject.get(String.valueOf(i));
 
 			Map<String, String> map = (Map) data.clone();
+			
+			//MusicScore.buil
 
 			String id = String.valueOf(map.get("id"));
 			String type = String.valueOf(map.get("type"));
@@ -53,7 +55,7 @@ public class DataExtractParser {
 			String intvals = String.valueOf(map.get("intvals"));
 			String permlink = String.valueOf(map.get("permlink"));
 
-			scoreMetaDatas.add(new Score(id, type, parent, intvals, permlink));
+			scoreMetaDatas.add(new MusicScore(id, type, parent, intvals, permlink));
 
 		}
 		return scoreMetaDatas;

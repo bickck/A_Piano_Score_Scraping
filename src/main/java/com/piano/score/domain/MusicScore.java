@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Score {
+public class MusicScore {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,11 @@ public class Score {
 	@Column(name = "PERMLINK")
 	private String permlink;
 
-	public Score() {
+	public MusicScore() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Score(String pageId, String type, String parent, String intvals, String permlink) {
+	public MusicScore(String pageId, String type, String parent, String intvals, String permlink) {
 		super();
 
 		this.pageId = pageId;

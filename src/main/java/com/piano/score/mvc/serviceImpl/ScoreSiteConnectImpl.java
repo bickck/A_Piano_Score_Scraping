@@ -1,13 +1,15 @@
 package com.piano.score.mvc.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.piano.score.domain.BaseInformation;
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.domain.ScoreListPage;
 import com.piano.score.domain.ScoreMetaData;
 import com.piano.score.mvc.repository.BaseInfoRepository;
@@ -20,6 +22,11 @@ import com.piano.score.web.netconnect.IMSLPConnect;
 @Service
 public class ScoreSiteConnectImpl implements ScoreDataService {
 
+	/*
+	 * 이 서비스는 저장을 위한 서비스임
+	 * 
+	 */
+
 	@Autowired
 	private IMSLPConnect connect;
 
@@ -27,10 +34,10 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	private ScoreRepository scoreRepository;
 
 	@Autowired
-	private BaseInfoRepository baseInfoRepository;
+	private DataExtract dataExtract;
 
 	@Autowired
-	private DataExtract dataExtract;
+	private BaseInfoRepository baseInfoRepository;
 
 	@Override
 	public void connectTest() throws ParseException {
@@ -38,38 +45,50 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		String url = connect.typeAndStartUrlSetting(1, 1);
 		DataExtractParser dataExtractParser = new DataExtractParser(url);
 
-		List<Score> lists = dataExtractParser.dataListExtract();
-		
+		List<MusicScore> lists = dataExtractParser.dataListExtract();
 
 	}
 
 	@Override
-	public ScoreListPage connect() {
+	@Transactional
+	public Long typeOneDataCount() throws Exception {
 		// TODO Auto-generated method stub
-		int i = 0;
-		boolean isCheck = true;
 
-		return null;
+		Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
+		if (base.get().getTypeOneCount() == 0) {
+			BaseInformation b = base.get();
+			Long result = dataExtract.typeOneWebDataCount();
+			
+			b.setTypeOneCount(result);
+			baseInfoRepository.save(b);
+		}
+
+		return (long) base.get().getTypeOneCount();
 	}
 
 	@Override
-	public int typeDataPageCount(int type) throws Exception {
+	@Transactional
+	public Long typeTwoDataCount() throws Exception {
 		// TODO Auto-generated method stub
-		int result = 0;
+		Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
+		if (base.get().getTypeTwoCount() == 0) {
+			
+			BaseInformation b = base.get();
+			Long result = dataExtract.typeTwoWebDataCount();
+			b.setTypeTwoCount(result);
+			
+			baseInfoRepository.save(b);
+			
+			return result;
+		}
 
-		return result;
+		return (long) base.get().getTypeTwoCount();
 	}
 
 	@Override
-	public Score findScoreList(String reqScoreName) {
+	public void allWebDataCollect() {
 		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Score> lists() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -9,16 +9,24 @@ import javax.persistence.Id;
 @Entity
 public class BaseInformation {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "Type_One_Count")
-	private int typeOneCount;
+	private Long typeOneCount;
 
 	@Column(name = "Type_Two_Count")
-	private int typeTwoCount;
+	private Long typeTwoCount;
 
-	public BaseInformation(int typeOneCount, int typeTwoCount) {
+	@Column(name = "Total")
+	private Long total;
+
+	public BaseInformation() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public BaseInformation(Long typeOneCount, Long typeTwoCount) {
 		super();
 		this.typeOneCount = typeOneCount;
 		this.typeTwoCount = typeTwoCount;
@@ -32,20 +40,28 @@ public class BaseInformation {
 		this.id = id;
 	}
 
-	public int getTypeOneCount() {
+	public Long getTypeOneCount() {
 		return typeOneCount;
 	}
 
-	public void setTypeOneCount(int typeOneCount) {
+	public void setTypeOneCount(Long typeOneCount) {
 		this.typeOneCount = typeOneCount;
 	}
 
-	public int getTypeTwoCount() {
+	public Long getTypeTwoCount() {
 		return typeTwoCount;
 	}
 
-	public void setTypeTwoCount(int typeTwoCount) {
+	public void setTypeTwoCount(Long typeTwoCount) {
 		this.typeTwoCount = typeTwoCount;
+	}
+
+	public Long getTotal() {
+		return total;
+	}
+
+	public void setTotal(Long total) {
+		this.total = total;
 	}
 
 }

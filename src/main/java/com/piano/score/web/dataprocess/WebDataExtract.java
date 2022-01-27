@@ -5,26 +5,29 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.domain.BaseInformation;
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.domain.ScoreListPage;
 import com.piano.score.domain.ScoreMetaData;
+import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.IMSLPConnect;
 import com.piano.score.web.netconnect.IMSLPConnectionImpl;
 
 @Configuration
 public class WebDataExtract implements DataExtract {
 
-	private IMSLPConnect imslpConnect = new IMSLPConnectionImpl();
+	@Autowired
+	private IMSLPConnect imslpConnect;
 
 	public WebDataExtract() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<Score> dataListExtract(String lists) throws ParseException {
+	public List<MusicScore> dataListExtract(String lists) throws ParseException {
 		// TODO Auto-generated method stub
 		DataExtractParser dataExtractParser = new DataExtractParser(lists);
 
@@ -40,36 +43,11 @@ public class WebDataExtract implements DataExtract {
 	}
 
 	@Override
-	public int allWebDataCount(int type) {
-		int result = 0, i = 0;
-
+	public Long typeOneWebDataCount() {
+		// TODO Auto-generated method stub
+		Long result = (long) 0;
 		try {
-			boolean isCheck = true;
-			Long start = System.currentTimeMillis();
-
-			while (isCheck) {
-				String url = imslpConnect.typeAndStartUrlSetting(type, i);
-				String pageResult = imslpConnect.connectToIMSLP(url);
-				JSONParser jsonParser = new JSONParser();
-				JSONObject jsonObject = (JSONObject) jsonParser.parse(pageResult);
-
-				int pageDataSize = jsonObject.size();
-
-				if (pageDataSize > 100) {
-					result += (pageDataSize - 1);
-					i += 1000;
-				} else {
-					if (pageDataSize == 1) {
-						isCheck = false;
-					}
-					result += (pageDataSize - 1);
-					isCheck = false;
-				}
-
-			}
-			Long end = System.currentTimeMillis();
-
-			System.out.println("Time" + " : " + (end - start) / 1000 + "초");
+			result = webDataCount(1);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -79,7 +57,19 @@ public class WebDataExtract implements DataExtract {
 		return result;
 	}
 
-	private int webAllDataCount(int type) throws Exception {
+	@Override
+	public Long typeTwoWebDataCount() {
+		// TODO Auto-generated method stub
+		Long result = (long) 0;
+		try {
+			result = webDataCount(2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	private Long webDataCount(int type) throws Exception {
 		int start = 0, end = 0, endData = 0;
 		boolean isCheck = true;
 		// 탐색 알고리즘
@@ -98,14 +88,14 @@ public class WebDataExtract implements DataExtract {
 				isCheck = false;
 			}
 		}
-
+		System.out.println(end);
 		isCheck = true;
 
 		while (isCheck) {
 
 			int mid = (end + start) / 2;
 
-			String url = imslpConnect.typeAndStartUrlSetting(1, mid);
+			String url = imslpConnect.typeAndStartUrlSetting(type, mid);
 			String data = imslpConnect.connectToIMSLP(url);
 			DataExtractParser dataExtractParser = new DataExtractParser(data);
 
@@ -128,27 +118,6 @@ public class WebDataExtract implements DataExtract {
 
 		System.out.println("time : " + (EndTime - StartTime) / 1000 + "초");
 
-		return ((end - 1) * 1000) + endData;
+		return (long) (((end - 1) * 1000) + endData);
 	}
-
-	private int resultTypeData(Long type) throws Exception {
-		
-		BaseInformation baseInformation = new BaseInformation(0, 0);
-		if (type == 1) {
-			if (baseInformation.getTypeOneCount() == 0) {
-				int result = webAllDataCount(1);
-				return result;
-			}
-			return baseInformation.getTypeOneCount();
-		}
-		if (type == 2) {
-			if (baseInformation.getTypeTwoCount() == 0) {
-				int result = webAllDataCount(2);
-				return result;
-			}
-			return baseInformation.getTypeTwoCount();
-		}
-		return -1;
-	}
-
 }

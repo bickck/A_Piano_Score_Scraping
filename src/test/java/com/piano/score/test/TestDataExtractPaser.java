@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.domain.ScoreMetaData;
 import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
 import com.piano.score.web.dataprocess.DataExtractParser;
@@ -43,7 +43,7 @@ public class TestDataExtractPaser {
 
 		DataExtractParser dataExtractParser = new DataExtractParser(result);
 
-		List<Score> lists = dataExtractParser.dataListExtract();
+		List<MusicScore> lists = dataExtractParser.dataListExtract();
 
 		// assertNotNull(lists);
 		// ScoreMetaData metaData = dataExtractParser.metadataExtract();

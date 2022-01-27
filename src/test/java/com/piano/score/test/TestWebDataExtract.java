@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.domain.Score;
+import com.piano.score.domain.MusicScore;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.IMSLPConnect;
@@ -98,7 +98,7 @@ public class TestWebDataExtract {
 	public void allWebDataCount() {
 		WebDataExtract dataExtract = new WebDataExtract();
 
-		int size = dataExtract.allWebDataCount(1);
-		System.out.println(size);
+		//int size = dataExtract.allWebDataCount(1);
+		//System.out.println(size);
 	}
 }

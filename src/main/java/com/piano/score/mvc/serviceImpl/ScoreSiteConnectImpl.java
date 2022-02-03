@@ -27,9 +27,6 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	 */
 
 	@Autowired
-	private IMSLPConnect connect;
-
-	@Autowired
 	private ScoreRepository scoreRepository;
 
 	@Autowired
@@ -39,12 +36,12 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	private BaseInfoRepository baseInfoRepository;
 
 	@Override
-	public void connectTest() throws ParseException {
+	public void connectTest() throws Exception {
 		// TODO Auto-generated method stub
-		String url = connect.typeAndStartUrlSetting(1, 1);
-		DataExtractParser dataExtractParser = new DataExtractParser(url);
-
-		List<PageScoreList> lists = dataExtractParser.dataListExtract();
+		
+		
+		// 여기서는 저장만해야 함
+		// score.save();
 
 	}
 
@@ -57,7 +54,7 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		if (base.get().getTypeOneCount() == 0) {
 			BaseInformation b = base.get();
 			Long result = dataExtract.typeOneWebDataCount();
-			
+
 			b.setTypeOneCount(result);
 			baseInfoRepository.save(b);
 		}
@@ -71,13 +68,13 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		// TODO Auto-generated method stub
 		Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
 		if (base.get().getTypeTwoCount() == 0) {
-			
+
 			BaseInformation b = base.get();
 			Long result = dataExtract.typeTwoWebDataCount();
 			b.setTypeTwoCount(result);
-			
+
 			baseInfoRepository.save(b);
-			
+
 			return result;
 		}
 

@@ -15,6 +15,6 @@ public interface ScoreDataService {
 
 	void allWebDataCollect();
 
-	void connectTest() throws ParseException;
+	void connectTest() throws Exception;
 
 }

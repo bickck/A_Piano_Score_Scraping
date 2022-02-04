@@ -15,8 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.piano.score.mvc.domain.PageScoreList;
 import com.piano.score.web.dataprocess.DataExtractParser;
 import com.piano.score.web.dataprocess.WebDataExtract;
-import com.piano.score.web.netconnect.IMSLPConnect;
-import com.piano.score.web.netconnect.IMSLPConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnect;
+import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
 public class TestWebDataExtract {
 
@@ -26,38 +26,38 @@ public class TestWebDataExtract {
 	}
 
 	public void defaultUrlTest() {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
+		ImslpConnect connect = new ImslpConnectionImpl();
 
-		String url = connect.defaultUrlSetting("id", 1, 0);
+		//String url = connect.defaultUrlSetting("id", 1, 0);
 
 		// System.out.println("defaultUrlTest : " + url);
 
 	}
 
 	public void typeAndStartUrlSetting() {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
+		ImslpConnect connect = new ImslpConnectionImpl();
 
-		String url = connect.typeAndStartUrlSetting(1, 100000);
+		//String url = connect.typeAndStartUrlSetting(1, 100000);
 
 		// System.out.println("typeAndStartUrlSetting : " + url);
 
 	}
 
 	public void connectTest() throws Exception {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
-		String url = connect.typeAndStartUrlSetting(1, 100000);
-		String test = connect.connectToIMSLP(url);
+		ImslpConnect connect = new ImslpConnectionImpl();
+		//String url = connect.typeAndStartUrlSetting(1, 100000);
+		//String test = connect.connectToIMSLP(url);
 		// System.out.println(test.length());
 		// assertNotNull(test);
 		// 148336 148334
 	}
 
 	public void jsonMapKeyTest() throws Exception {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
-		String url = connect.typeAndStartUrlSetting(1, 100000);
+		ImslpConnect connect = new ImslpConnectionImpl();
+		//String url = connect.typeAndStartUrlSetting(1, 100000);
 
 		Long start = System.currentTimeMillis();
-		String result = connect.connectToIMSLP(url);
+		// String result = connect.connectToIMSLP(url);
 		Long end = System.currentTimeMillis();
 
 		System.out.println("Time" + " : " + (end - start) / 1000 + "초");
@@ -65,10 +65,10 @@ public class TestWebDataExtract {
 	}
 
 	public void dataListExtractTest() throws Exception {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
-		String url = connect.typeAndStartUrlSetting(1, 0);
-		String result = connect.connectToIMSLP(url);
-		// DataExtractParser dataExtract = new DataExtractParser();
+		ImslpConnect connect = new ImslpConnectionImpl();
+		//String url = connect.typeAndStartUrlSetting(1, 0);
+		//String result = connect.connectToIMSLP(url);
+		/// DataExtractParser dataExtract = new DataExtractParser();
 
 		// List<Score> lists = dataExtract.dataListExtract(result);
 
@@ -77,13 +77,13 @@ public class TestWebDataExtract {
 	}
 
 	public void dataListCount() {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
-		String url = connect.typeAndStartUrlSetting(1, 0);
+		// ImslpConnect connect = new ImslpConnectionImpl();
+		//String url = connect.typeAndStartUrlSetting(1, 0);
 		// DataExtractParser dataExtract = new DataExtractParser();
 
 		try {
 
-			String result = connect.connectToIMSLP(url);
+		//	String result = connect.connectToIMSLP(url);
 
 			// List<Score> lists = dataExtract.dataListExtract(result);
 			// System.out.println(lists.size());

@@ -32,7 +32,7 @@ import org.springframework.web.client.RestTemplate;
 import com.piano.score.mvc.domain.PageMetaData;
 
 @Configuration
-public class IMSLPConnectionImpl implements IMSLPConnect {
+public class ImslpConnectionImpl implements ImslpConnect {
 
 	// type = 1은 사람
 	// type = 2는 악보
@@ -42,12 +42,12 @@ public class IMSLPConnectionImpl implements IMSLPConnect {
 
 	private String result;
 
-	public IMSLPConnectionImpl() {
+	public ImslpConnectionImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public String defaultUrlSetting(String sort, Integer type, Integer start) {
+	public String defaultUrlSet(String sort, Integer type, Integer start) {
 		// TODO Auto-generated method stub
 		String url = defaultUrl + "sort=" + sort + "/type=" + type.toString() + "/start=" + start.toString()
 				+ "/retformat=json";
@@ -55,7 +55,7 @@ public class IMSLPConnectionImpl implements IMSLPConnect {
 	}
 
 	@Override
-	public String typeAndStartUrlSetting(Integer type, Integer start) {
+	public String typeAndStartUrlSet(Integer type, Integer start) {
 		// TODO Auto-generated method stub
 		String url = typeAndStartUrl + "sort=id/type=" + type.toString() + "/start=" + start.toString()
 				+ "/retformat=json";

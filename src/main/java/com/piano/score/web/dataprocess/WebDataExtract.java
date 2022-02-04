@@ -8,37 +8,42 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.domain.BaseInformation;
+import com.piano.score.domain.PageData;
+import com.piano.score.mvc.domain.BaseInformation;
 import com.piano.score.mvc.domain.PageMetaData;
 import com.piano.score.mvc.domain.PageScoreList;
 import com.piano.score.mvc.repository.BaseInfoRepository;
-import com.piano.score.web.netconnect.IMSLPConnect;
-import com.piano.score.web.netconnect.IMSLPConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnect;
+import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
 @Configuration
 public class WebDataExtract implements DataExtract {
 
 	@Autowired
-	private IMSLPConnect imslpConnect;
+	private ImslpConnect imslpConnect;
 
 	public WebDataExtract() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<PageScoreList> dataListExtract(String lists) throws ParseException {
+	public PageData pageDataExtract(String url) {
 		// TODO Auto-generated method stub
-		DataExtractParser dataExtractParser = new DataExtractParser(lists);
+		String result = "";
+		DataExtractParser dataExtract = null;
+		PageData data = null;
 
-		return dataExtractParser.dataListExtract();
-	}
+		try {
+			result = imslpConnect.connectToIMSLP(url);
+			dataExtract = new DataExtractParser(result);
+			data = new PageData(dataExtract.dataListExtract(), dataExtract.metadataExtract());
 
-	@Override
-	public PageMetaData metadataExtract(String lists) throws ParseException {
-		// TODO Auto-generated method stub
-		DataExtractParser dataExtractParser = new DataExtractParser(lists);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		return dataExtractParser.metadataExtract();
+		return data;
 	}
 
 	@Override
@@ -77,7 +82,7 @@ public class WebDataExtract implements DataExtract {
 
 		while (isCheck) {
 
-			String url = imslpConnect.typeAndStartUrlSetting(type, end);
+			String url = imslpConnect.typeAndStartUrlSet(type, end);
 			String data = imslpConnect.connectToIMSLP(url);
 			DataExtractParser dataExtractParser = new DataExtractParser(data);
 
@@ -94,7 +99,7 @@ public class WebDataExtract implements DataExtract {
 
 			int mid = (end + start) / 2;
 
-			String url = imslpConnect.typeAndStartUrlSetting(type, mid);
+			String url = imslpConnect.typeAndStartUrlSet(type, mid);
 			String data = imslpConnect.connectToIMSLP(url);
 			DataExtractParser dataExtractParser = new DataExtractParser(data);
 
@@ -106,7 +111,7 @@ public class WebDataExtract implements DataExtract {
 			}
 			if (dataExtractParser.dataSize() < 1000 && dataExtractParser.dataSize() > 1) {
 				end = mid;
-				url = imslpConnect.typeAndStartUrlSetting(1, end);
+				url = imslpConnect.typeAndStartUrlSet(1, end);
 				data = imslpConnect.connectToIMSLP(url);
 				dataExtractParser = new DataExtractParser(data);
 				endData = dataExtractParser.dataSize();

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.domain.BaseInformation;
+import com.piano.score.mvc.domain.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 
 @SpringBootTest

@@ -3,7 +3,7 @@ package com.piano.score;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.piano.score.web.netconnect.IMSLPConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnectionImpl;
 import com.piano.score.web.scraping.ArtistScraping;
 
 @SpringBootApplication

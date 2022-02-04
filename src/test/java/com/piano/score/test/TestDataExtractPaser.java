@@ -15,8 +15,8 @@ import com.piano.score.mvc.domain.PageMetaData;
 import com.piano.score.mvc.domain.PageScoreList;
 import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
 import com.piano.score.web.dataprocess.DataExtractParser;
-import com.piano.score.web.netconnect.IMSLPConnect;
-import com.piano.score.web.netconnect.IMSLPConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnect;
+import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
 @SpringBootTest
 public class TestDataExtractPaser {
@@ -25,7 +25,7 @@ public class TestDataExtractPaser {
 
 	
 	public void test() throws Exception {
-		IMSLPConnect connect = new IMSLPConnectionImpl();
+		ImslpConnect connect = new ImslpConnectionImpl();
 
 		String result = connect.connectToIMSLP(testURL);
 

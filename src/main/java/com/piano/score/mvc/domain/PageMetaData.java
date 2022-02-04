@@ -1,5 +1,8 @@
 package com.piano.score.mvc.domain;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class PageMetaData {
 
 	private int start;

@@ -5,7 +5,7 @@ import org.json.simple.parser.ParseException;
 
 import com.piano.score.mvc.domain.PageMetaData;
 
-public interface IMSLPConnect {
+public interface ImslpConnect {
 
 	// List of people (composers, performers, editors, etc.):
 	// http://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=<pretty|json|php|wddx>
@@ -17,9 +17,9 @@ public interface IMSLPConnect {
 
 	String connectToIMSLP(String url) throws Exception;
 
-	String defaultUrlSetting(String sort, Integer type, Integer start);
+	String defaultUrlSet(String sort, Integer type, Integer start);
 
-	String typeAndStartUrlSetting(Integer type, Integer start);
+	String typeAndStartUrlSet(Integer type, Integer start);
 
 	boolean moreresultsavailable() throws ParseException;
 

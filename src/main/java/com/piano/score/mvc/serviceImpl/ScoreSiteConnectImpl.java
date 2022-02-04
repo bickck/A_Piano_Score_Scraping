@@ -1,22 +1,17 @@
 package com.piano.score.mvc.serviceImpl;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.piano.score.domain.BaseInformation;
-import com.piano.score.mvc.domain.PageMetaData;
-import com.piano.score.mvc.domain.PageScoreList;
+import com.piano.score.mvc.domain.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.service.ScoreDataService;
 import com.piano.score.web.dataprocess.DataExtract;
-import com.piano.score.web.dataprocess.DataExtractParser;
-import com.piano.score.web.netconnect.IMSLPConnect;
+
 
 @Service
 public class ScoreSiteConnectImpl implements ScoreDataService {
@@ -34,16 +29,6 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 
 	@Autowired
 	private BaseInfoRepository baseInfoRepository;
-
-	@Override
-	public void connectTest() throws Exception {
-		// TODO Auto-generated method stub
-		
-		
-		// 여기서는 저장만해야 함
-		// score.save();
-
-	}
 
 	@Override
 	@Transactional
@@ -84,6 +69,22 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	@Override
 	public void allWebDataCollect() {
 		// TODO Auto-generated method stub
+		//Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
+		//Long count = base.get().getTypeOneCount();
+		//int i = 0;
+		//while(i < 10) {
+			
+		//}
+		
+		
+	}
+
+	@Override
+	public void connectTest() throws Exception {
+		// TODO Auto-generated method stub
+
+		// 여기서는 저장만해야 함
+		// score.save();
 
 	}
 

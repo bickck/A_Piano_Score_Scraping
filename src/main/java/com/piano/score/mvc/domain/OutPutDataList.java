@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ManyToAny;
 
@@ -20,12 +22,54 @@ public class OutPutDataList {
 	@GeneratedValue
 	private Long id;
 
-	@Column(name = "DATALIST")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private List<PageScoreList> pageScoreList;
+	@Column(name = "LISTS")
+	@OneToMany(mappedBy = "pageId",fetch = FetchType.LAZY)
+	private List<ScoreInfoList> pageScoreList;
 
-	@Column(name = "METADATA")
-	@Embedded
-	private PageMetaData metaData;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name ="start")
+	private MetaData metaData;
+
+	public OutPutDataList() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public OutPutDataList(List<ScoreInfoList> pageScoreList, MetaData metaData) {
+		super();
+		this.pageScoreList = pageScoreList;
+		this.metaData = metaData;
+	}
+
+	public OutPutDataList(Long id, List<ScoreInfoList> pageScoreList, MetaData metaData) {
+		super();
+		this.id = id;
+		this.pageScoreList = pageScoreList;
+		this.metaData = metaData;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<ScoreInfoList> getPageScoreList() {
+		return pageScoreList;
+	}
+
+	public void setPageScoreList(List<ScoreInfoList> pageScoreList) {
+		this.pageScoreList = pageScoreList;
+	}
+
+	public MetaData getMetaData() {
+		return metaData;
+	}
+
+	public void setMetaData(MetaData metaData) {
+		this.metaData = metaData;
+	}
 
 }

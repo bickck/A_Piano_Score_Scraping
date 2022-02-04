@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.piano.score.mvc.domain.PageMetaData;
+import com.piano.score.mvc.domain.MetaData;
 import com.piano.score.mvc.service.ScoreDataService;
 
 @RestController

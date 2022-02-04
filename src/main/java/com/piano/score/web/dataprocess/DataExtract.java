@@ -5,8 +5,8 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 
 import com.piano.score.domain.PageData;
-import com.piano.score.mvc.domain.PageMetaData;
-import com.piano.score.mvc.domain.PageScoreList;
+import com.piano.score.mvc.domain.MetaData;
+import com.piano.score.mvc.domain.ScoreInfoList;
 
 public interface DataExtract {
 

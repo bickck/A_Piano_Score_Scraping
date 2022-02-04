@@ -11,8 +11,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.mvc.domain.PageMetaData;
-import com.piano.score.mvc.domain.PageScoreList;
+import com.piano.score.domain.PageMetaData;
+import com.piano.score.domain.PageScoreList;
+import com.piano.score.mvc.domain.MetaData;
+import com.piano.score.mvc.domain.ScoreInfoList;
 
 public class DataExtractParser {
 
@@ -24,7 +26,6 @@ public class DataExtractParser {
 
 		this.jsonParser = new JSONParser();
 		jsonObject = (JSONObject) jsonParser.parse(lists);
-
 	}
 
 	public PageMetaData metadataExtract() throws ParseException {
@@ -46,8 +47,6 @@ public class DataExtractParser {
 			JSONObject data = (JSONObject) jsonObject.get(String.valueOf(i));
 
 			Map<String, String> map = (Map) data.clone();
-			
-			//MusicScore.buil
 
 			String id = String.valueOf(map.get("id"));
 			String type = String.valueOf(map.get("type"));

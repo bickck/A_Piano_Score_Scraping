@@ -1,17 +1,20 @@
-package com.piano.score.mvc.domain;
+package com.piano.score.domain;
 
-import javax.persistence.Embeddable;
-
-@Embeddable
 public class PageMetaData {
 
-	private int start;
-	private int limit;
+	private Integer start;
+
+	private Integer limit;
+
 	private String sortBy;
+
 	private String sortDirection;
-	private boolean moreResultAvailable;
-	private long timeStamp;
-	private int version;
+
+	private Boolean moreResultAvailable;
+
+	private Long timeStamp;
+
+	private Integer version;
 
 	public PageMetaData() {
 		// TODO Auto-generated constructor stub

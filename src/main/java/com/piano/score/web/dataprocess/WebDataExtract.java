@@ -1,17 +1,13 @@
 package com.piano.score.web.dataprocess;
 
-import java.util.List;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.domain.PageData;
+import com.piano.score.domain.PageScoreList;
 import com.piano.score.mvc.domain.BaseInformation;
-import com.piano.score.mvc.domain.PageMetaData;
-import com.piano.score.mvc.domain.PageScoreList;
+import com.piano.score.mvc.domain.MetaData;
+import com.piano.score.mvc.domain.ScoreInfoList;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
@@ -31,19 +27,19 @@ public class WebDataExtract implements DataExtract {
 		// TODO Auto-generated method stub
 		String result = "";
 		DataExtractParser dataExtract = null;
-		PageData data = null;
+		PageScoreList data = null;
 
 		try {
 			result = imslpConnect.connectToIMSLP(url);
 			dataExtract = new DataExtractParser(result);
-			data = new PageData(dataExtract.dataListExtract(), dataExtract.metadataExtract());
+			//data = new PageScoreList(dataExtract.dataListExtract(), dataExtract.metadataExtract());
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return data;
+		return null;
 	}
 
 	@Override

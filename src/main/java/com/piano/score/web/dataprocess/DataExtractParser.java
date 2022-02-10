@@ -33,8 +33,7 @@ public class DataExtractParser {
 
 		JSONObject metadata = (JSONObject) jsonObject.get("metadata");
 
-		Map<String, String> map = (Map) metadata.clone(); // (Map) metadata.clone();
-
+		Map<String, String> map = (Map) metadata.clone();
 		return metaDataParser(map);
 	}
 

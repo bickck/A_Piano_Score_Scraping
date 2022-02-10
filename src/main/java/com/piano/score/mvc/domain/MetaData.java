@@ -1,9 +1,12 @@
 package com.piano.score.mvc.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import com.piano.score.domain.ResultAvailableConvert;
 
 @Entity
 public class MetaData {
@@ -22,7 +25,8 @@ public class MetaData {
 	private String sortDirection;
 	
 	@Column(name ="MORERESULTAVAILABLE")
-	private Boolean moreResultAvailable;
+	//@Convert(converter = ResultAvailableConvert.class)
+	private String moreResultAvailable;
 	
 	@Column(name ="TIMESTAMP")
 	private Long timeStamp;
@@ -41,7 +45,7 @@ public class MetaData {
 				+ ", version=" + version + "]";
 	}
 
-	public MetaData(int start, int limit, String sortBy, String sortDirection, boolean moreResultAvailable,
+	public MetaData(int start, int limit, String sortBy, String sortDirection, String moreResultAvailable,
 			long timeStamp, int version) {
 		super();
 		this.start = start;
@@ -85,11 +89,11 @@ public class MetaData {
 		this.sortDirection = sortDirection;
 	}
 
-	public boolean isMoreResultAvailable() {
+	public String isMoreResultAvailable() {
 		return moreResultAvailable;
 	}
 
-	public void setMoreResultAvailable(boolean moreResultAvailable) {
+	public void setMoreResultAvailable(String moreResultAvailable) {
 		this.moreResultAvailable = moreResultAvailable;
 	}
 

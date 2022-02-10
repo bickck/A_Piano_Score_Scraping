@@ -1,6 +1,5 @@
 package com.piano.score.mvc.domain;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +19,10 @@ public class ScoreInfoList {
 	@Column(name = "TYPE")
 	private String type;
 
-	@Column(name = "PARENT")
+	@Column(name = "PARENT", nullable = true)
 	private String parent;
 
-	@Column(name = "INTVALS")
+	@Column(name = "INTVALS", nullable = true)
 	private String intvals;
 
 	@Column(name = "PERMLINK")

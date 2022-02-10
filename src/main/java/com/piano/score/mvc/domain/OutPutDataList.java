@@ -7,6 +7,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +20,7 @@ import org.hibernate.annotations.ManyToAny;
 public class OutPutDataList {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "LISTS")
@@ -28,7 +29,7 @@ public class OutPutDataList {
 
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="start")
+	@JoinColumn(name ="START")
 	private MetaData metaData;
 
 	public OutPutDataList() {

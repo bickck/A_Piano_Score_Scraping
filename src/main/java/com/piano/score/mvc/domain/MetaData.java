@@ -12,26 +12,26 @@ import com.piano.score.domain.ResultAvailableConvert;
 public class MetaData {
 
 	@Id
-	@Column(name = "START")
-	private Integer start;
+	@Column(name = "PAGE_START")
+	private int start;
 	
-	@Column(name ="LIMIT")
-	private Integer limit;
+	@Column(name ="PAGE_LIMIT")
+	private int limit;
 	
-	@Column(name ="SORTBY")
+	@Column(name ="PAGE_SORTBY")
 	private String sortBy;
 	
-	@Column(name ="SORTDIRECTION")
+	@Column(name ="PAGE_SORTDIRECTION")
 	private String sortDirection;
 	
-	@Column(name ="MORERESULTAVAILABLE")
+	@Column(name ="PAGE_RESULTAVAILABLE")
 	//@Convert(converter = ResultAvailableConvert.class)
 	private String moreResultAvailable;
 	
-	@Column(name ="TIMESTAMP")
+	@Column(name ="PAGE_TIMESTAMP")
 	private Long timeStamp;
 	
-	@Column(name ="VERSION")
+	@Column(name ="PAGE_VERSION")
 	private Integer version;
 
 	public MetaData() {

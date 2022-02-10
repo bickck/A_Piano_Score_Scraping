@@ -29,7 +29,7 @@ public class OutPutDataList {
 
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="START")
+	@JoinColumn(name ="start")
 	private MetaData metaData;
 
 	public OutPutDataList() {

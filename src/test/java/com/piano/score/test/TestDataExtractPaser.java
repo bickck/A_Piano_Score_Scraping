@@ -11,10 +11,10 @@ import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.mvc.domain.MetaData;
-import com.piano.score.mvc.domain.ScoreInfoList;
+import com.piano.score.mvc.repositorydomain.MetaData;
+import com.piano.score.mvc.repositorydomain.ScoreInfoList;
 import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
-import com.piano.score.web.dataprocess.DataExtractParser;
+import com.piano.score.web.dataprocess.WebDataConvert;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
@@ -41,15 +41,15 @@ public class TestDataExtractPaser {
 
 		// assertNotNull(result);
 
-		DataExtractParser dataExtractParser = new DataExtractParser(result);
+		WebDataConvert dataExtractParser = new WebDataConvert(result);
 
-		List<ScoreInfoList> lists = dataExtractParser.dataListExtract();
+		//List<ScoreInfoList> lists = dataExtractParser.dataListExtract();
 
 		// assertNotNull(lists);
 		// ScoreMetaData metaData = dataExtractParser.metadataExtract();
 
 		// System.out.println(metaData.toString());
-		System.out.println(lists.size());
+		//System.out.println(lists.size());
 
 	}
 

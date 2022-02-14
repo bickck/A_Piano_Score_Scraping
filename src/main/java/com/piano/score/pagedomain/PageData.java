@@ -1,9 +1,9 @@
-package com.piano.score.domain;
+package com.piano.score.pagedomain;
 
 import java.util.List;
 
-import com.piano.score.mvc.domain.MetaData;
-import com.piano.score.mvc.domain.ScoreInfoList;
+import com.piano.score.mvc.repositorydomain.MetaData;
+import com.piano.score.mvc.repositorydomain.ScoreInfoList;
 
 public class PageData {
 

@@ -1,38 +1,22 @@
-package com.piano.score.mvc.domain;
+package com.piano.score.pagedomain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class PageScoreList {
 
-@Entity
-public class ScoreInfoList {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(name = "PAGE_ID")
 	private String pageId;
 
-	@Column(name = "TYPE")
 	private String type;
 
-	@Column(name = "PARENT", nullable = true)
 	private String parent;
 
-	@Column(name = "INTVALS", nullable = true)
 	private String intvals;
 
-	@Column(name = "PERMLINK")
 	private String permlink;
 
-	public ScoreInfoList() {
+	public PageScoreList() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScoreInfoList(String pageId, String type, String parent, String intvals, String permlink) {
+	public PageScoreList(String pageId, String type, String parent, String intvals, String permlink) {
 		super();
 
 		this.pageId = pageId;

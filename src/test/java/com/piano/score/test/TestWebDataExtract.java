@@ -12,8 +12,8 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.mvc.domain.ScoreInfoList;
-import com.piano.score.web.dataprocess.DataExtractParser;
+import com.piano.score.mvc.repositorydomain.ScoreInfoList;
+import com.piano.score.web.dataprocess.WebDataConvert;
 import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;

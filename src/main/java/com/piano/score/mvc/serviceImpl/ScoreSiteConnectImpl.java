@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.piano.score.mvc.domain.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
+import com.piano.score.mvc.repository.OutPutDataListRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
+import com.piano.score.mvc.repositorydomain.BaseInformation;
 import com.piano.score.mvc.service.ScoreDataService;
+import com.piano.score.pagedomain.PageData;
 import com.piano.score.web.dataprocess.DataExtract;
 
 @Service
@@ -22,6 +24,9 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 
 	@Autowired
 	private ScoreRepository scoreRepository;
+	
+	@Autowired
+	private OutPutDataListRepository dataListRepository;
 
 	@Autowired
 	private DataExtract dataExtract;
@@ -41,6 +46,8 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 
 			b.setTypeOneCount(result);
 			baseInfoRepository.save(b);
+
+			return result;
 		}
 
 		return (long) base.get().getTypeOneCount();
@@ -66,15 +73,16 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	}
 
 	@Override
-	public void allWebDataCollect() {
+	public void allWebDataCollect(int type) throws Exception {
 		// TODO Auto-generated method stub
-		// Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
-		// Long count = base.get().getTypeOneCount();
-		// int i = 0;
-		// while(i < 10) {
+		int start = 0;
 
-		// }
-
+		while (true) {
+			PageData pageData = dataExtract.pageDataExtract(type, start);
+			
+			
+			
+		}
 	}
 
 	@Override

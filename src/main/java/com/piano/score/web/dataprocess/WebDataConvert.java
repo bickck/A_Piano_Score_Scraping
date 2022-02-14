@@ -11,17 +11,17 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.domain.PageMetaData;
-import com.piano.score.domain.PageScoreList;
-import com.piano.score.mvc.domain.MetaData;
-import com.piano.score.mvc.domain.ScoreInfoList;
+import com.piano.score.mvc.repositorydomain.MetaData;
+import com.piano.score.mvc.repositorydomain.ScoreInfoList;
+import com.piano.score.pagedomain.PageMetaData;
+import com.piano.score.pagedomain.PageScoreList;
 
-public class DataExtractParser {
+public class WebDataConvert {
 
 	private JSONParser jsonParser;
 	private JSONObject jsonObject;
 
-	public DataExtractParser(String lists) throws ParseException {
+	public WebDataConvert(String lists) throws ParseException {
 		// TODO Auto-generated constructor stub
 
 		this.jsonParser = new JSONParser();

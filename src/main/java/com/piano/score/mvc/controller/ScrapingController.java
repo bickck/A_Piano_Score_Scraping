@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.piano.score.mvc.domain.MetaData;
+import com.piano.score.mvc.repositorydomain.MetaData;
 import com.piano.score.mvc.service.ScoreDataService;
 
 @RestController
@@ -37,6 +37,12 @@ public class ScrapingController {
 		long result = siteConnectService.typeTwoDataCount();
 		String value = String.format("%,d", result);
 		return value + "개";
+	}
+
+	@GetMapping("/allWebDataCollect")
+	public void allWebDataCollect() throws Exception {
+		int type = 1;
+		siteConnectService.allWebDataCollect(type);
 	}
 
 }

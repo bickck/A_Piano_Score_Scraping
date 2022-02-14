@@ -5,7 +5,7 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.piano.score.mvc.domain.ScoreInfoList;
+import com.piano.score.mvc.repositorydomain.ScoreInfoList;
 
 public interface ScoreDataService {
 
@@ -13,7 +13,7 @@ public interface ScoreDataService {
 
 	Long typeTwoDataCount() throws Exception;
 
-	void allWebDataCollect();
+	void allWebDataCollect(int type) throws Exception;
 
 	void connectTest() throws Exception;
 

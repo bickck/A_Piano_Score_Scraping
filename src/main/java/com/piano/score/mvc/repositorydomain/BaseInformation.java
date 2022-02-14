@@ -1,4 +1,4 @@
-package com.piano.score.mvc.domain;
+package com.piano.score.mvc.repositorydomain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

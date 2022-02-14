@@ -7,33 +7,33 @@ import com.piano.score.mvc.domain.ScoreInfoList;
 
 public class PageData {
 
-	private List<ScoreInfoList> list;
+	private List<PageScoreList> list;
 
-	private MetaData metaData;
+	private PageMetaData metaData;
 
 	public PageData() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PageData(List<ScoreInfoList> list, MetaData metaData) {
+	public PageData(List<PageScoreList> list, PageMetaData metaData) {
 		super();
 		this.list = list;
 		this.metaData = metaData;
 	}
 
-	public List<ScoreInfoList> getList() {
+	public List<PageScoreList> getList() {
 		return list;
 	}
 
-	public void setList(List<ScoreInfoList> list) {
+	public void setList(List<PageScoreList> list) {
 		this.list = list;
 	}
 
-	public MetaData getMetaData() {
+	public PageMetaData getMetaData() {
 		return metaData;
 	}
 
-	public void setMetaData(MetaData metaData) {
+	public void setMetaData(PageMetaData metaData) {
 		this.metaData = metaData;
 	}
 

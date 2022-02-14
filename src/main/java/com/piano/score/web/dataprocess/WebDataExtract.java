@@ -1,5 +1,6 @@
 package com.piano.score.web.dataprocess;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +24,7 @@ public class WebDataExtract implements DataExtract {
 	}
 
 	@Override
-	public PageData pageDataExtract(String url) {
+	public PageData pageDataExtract(String url) throws Exception {
 		// TODO Auto-generated method stub
 		String result = "";
 		DataExtractParser dataExtract = null;
@@ -39,7 +40,7 @@ public class WebDataExtract implements DataExtract {
 			e.printStackTrace();
 		}
 
-		return null;
+		return new PageData(dataExtract.dataListExtract(), dataExtract.metadataExtract());
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import com.piano.score.mvc.domain.ScoreInfoList;
 
 public interface DataExtract {
 
-	PageData pageDataExtract(String url);
+	PageData pageDataExtract(String url) throws Exception;
 
 	Long typeOneWebDataCount();
 

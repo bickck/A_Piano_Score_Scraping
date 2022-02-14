@@ -12,7 +12,6 @@ import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.service.ScoreDataService;
 import com.piano.score.web.dataprocess.DataExtract;
 
-
 @Service
 public class ScoreSiteConnectImpl implements ScoreDataService {
 
@@ -69,14 +68,13 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	@Override
 	public void allWebDataCollect() {
 		// TODO Auto-generated method stub
-		//Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
-		//Long count = base.get().getTypeOneCount();
-		//int i = 0;
-		//while(i < 10) {
-			
-		//}
-		
-		
+		// Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
+		// Long count = base.get().getTypeOneCount();
+		// int i = 0;
+		// while(i < 10) {
+
+		// }
+
 	}
 
 	@Override

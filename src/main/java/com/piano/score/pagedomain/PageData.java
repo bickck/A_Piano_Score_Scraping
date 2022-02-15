@@ -3,37 +3,37 @@ package com.piano.score.pagedomain;
 import java.util.List;
 
 import com.piano.score.mvc.repositorydomain.MetaData;
-import com.piano.score.mvc.repositorydomain.ScoreInfoList;
+import com.piano.score.mvc.repositorydomain.ScoreList;
 
 public class PageData {
 
-	private List<PageScoreList> list;
+	private List<ScoreList> list;
 
-	private PageMetaData metaData;
+	private MetaData metaData;
 
 	public PageData() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PageData(List<PageScoreList> list, PageMetaData metaData) {
+	public PageData(List<ScoreList> dataListExtract, MetaData metaData) {
 		super();
-		this.list = list;
+		this.list = dataListExtract;
 		this.metaData = metaData;
 	}
 
-	public List<PageScoreList> getList() {
+	public List<ScoreList> getList() {
 		return list;
 	}
 
-	public void setList(List<PageScoreList> list) {
+	public void setList(List<ScoreList> list) {
 		this.list = list;
 	}
 
-	public PageMetaData getMetaData() {
+	public MetaData getMetaData() {
 		return metaData;
 	}
 
-	public void setMetaData(PageMetaData metaData) {
+	public void setMetaData(MetaData metaData) {
 		this.metaData = metaData;
 	}
 

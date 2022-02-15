@@ -5,16 +5,17 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.piano.score.mvc.repositorydomain.ScoreInfoList;
+import com.piano.score.mvc.repositorydomain.OutPutDataList;
+import com.piano.score.mvc.repositorydomain.ScoreList;
 
-public interface ScoreDataService {
+public interface WebDataService {
 
 	Long typeOneDataCount() throws Exception;
 
 	Long typeTwoDataCount() throws Exception;
 
 	void allWebDataCollect(int type) throws Exception;
-
-	void connectTest() throws Exception;
+	
+	OutPutDataList saveTest(int type);
 
 }

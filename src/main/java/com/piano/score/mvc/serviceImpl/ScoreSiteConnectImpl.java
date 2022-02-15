@@ -7,15 +7,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.piano.score.mvc.repository.BaseInfoRepository;
-import com.piano.score.mvc.repository.OutPutDataListRepository;
+import com.piano.score.mvc.repository.MetaDataRepository;
+import com.piano.score.mvc.repository.PageDataListRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.repositorydomain.BaseInformation;
-import com.piano.score.mvc.service.ScoreDataService;
+import com.piano.score.mvc.repositorydomain.OutPutDataList;
+import com.piano.score.mvc.service.WebDataService;
 import com.piano.score.pagedomain.PageData;
 import com.piano.score.web.dataprocess.DataExtract;
 
 @Service
-public class ScoreSiteConnectImpl implements ScoreDataService {
+public class ScoreSiteConnectImpl implements WebDataService {
 
 	/*
 	 * 이 서비스는 저장을 위한 서비스임
@@ -26,7 +28,10 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 	private ScoreRepository scoreRepository;
 	
 	@Autowired
-	private OutPutDataListRepository dataListRepository;
+	private MetaDataRepository metaDataRepository;
+
+	@Autowired
+	private PageDataListRepository dataListRepository;
 
 	@Autowired
 	private DataExtract dataExtract;
@@ -78,20 +83,26 @@ public class ScoreSiteConnectImpl implements ScoreDataService {
 		int start = 0;
 
 		while (true) {
-			PageData pageData = dataExtract.pageDataExtract(type, start);
-			
-			
+			OutPutDataList pageData = dataExtract.pageDataExtract(type, start);
 			
 		}
 	}
 
 	@Override
-	public void connectTest() throws Exception {
+	public OutPutDataList saveTest(int type) {
 		// TODO Auto-generated method stub
+		int start = 0;
+		OutPutDataList pageData = null;
+		try {
+			pageData = dataExtract.pageDataExtract(type, start);
+			scoreRepository.saveAll(pageData.getPageScoreList());
+			metaDataRepository.save(pageData.getMetaData());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		// 여기서는 저장만해야 함
-		// score.save();
-
+		return dataListRepository.save(pageData);
 	}
-
 }

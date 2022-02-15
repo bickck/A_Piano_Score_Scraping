@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.piano.score.mvc.repositorydomain.MetaData;
-import com.piano.score.mvc.service.ScoreDataService;
+import com.piano.score.mvc.service.WebDataService;
 
 @RestController
 public class ScrapingController {
 
 	@Autowired
-	private ScoreDataService siteConnectService;
+	private WebDataService siteConnectService;
 
 	@GetMapping("/requestAllScoreList")
 	public void requestScoreList() throws Exception {
@@ -45,4 +45,9 @@ public class ScrapingController {
 		siteConnectService.allWebDataCollect(type);
 	}
 
+	@GetMapping("/saveTest")
+	public void saveTest() throws Exception {
+		int type = 1;
+		siteConnectService.saveTest(type);
+	}
 }

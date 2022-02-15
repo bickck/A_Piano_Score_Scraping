@@ -16,6 +16,9 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.piano.score.pagedomain.PageMetaData;
+import com.piano.score.pagedomain.PageScoreList;
+
 @Entity
 public class OutPutDataList {
 
@@ -24,25 +27,24 @@ public class OutPutDataList {
 	private Long id;
 
 	@Column(name = "LISTS")
-	@OneToMany(mappedBy = "pageId",fetch = FetchType.LAZY)
-	private List<ScoreInfoList> pageScoreList;
+	@OneToMany(mappedBy = "pageId", fetch = FetchType.LAZY)
+	private List<ScoreList> pageScoreList;
 
-	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="start")
+	@JoinColumn(name = "start")
 	private MetaData metaData;
 
 	public OutPutDataList() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OutPutDataList(List<ScoreInfoList> pageScoreList, MetaData metaData) {
+	public OutPutDataList(List<ScoreList> pageScoreList, MetaData metaData) {
 		super();
 		this.pageScoreList = pageScoreList;
 		this.metaData = metaData;
 	}
 
-	public OutPutDataList(Long id, List<ScoreInfoList> pageScoreList, MetaData metaData) {
+	public OutPutDataList(Long id, List<ScoreList> pageScoreList, MetaData metaData) {
 		super();
 		this.id = id;
 		this.pageScoreList = pageScoreList;
@@ -57,11 +59,11 @@ public class OutPutDataList {
 		this.id = id;
 	}
 
-	public List<ScoreInfoList> getPageScoreList() {
+	public List<ScoreList> getPageScoreList() {
 		return pageScoreList;
 	}
 
-	public void setPageScoreList(List<ScoreInfoList> pageScoreList) {
+	public void setPageScoreList(List<ScoreList> pageScoreList) {
 		this.pageScoreList = pageScoreList;
 	}
 

@@ -26,7 +26,7 @@ public class ScoreSiteConnectImpl implements WebDataService {
 
 	@Autowired
 	private ScoreRepository scoreRepository;
-	
+
 	@Autowired
 	private MetaDataRepository metaDataRepository;
 
@@ -84,7 +84,7 @@ public class ScoreSiteConnectImpl implements WebDataService {
 
 		while (true) {
 			OutPutDataList pageData = dataExtract.pageDataExtract(type, start);
-			
+
 		}
 	}
 
@@ -97,12 +97,27 @@ public class ScoreSiteConnectImpl implements WebDataService {
 			pageData = dataExtract.pageDataExtract(type, start);
 			scoreRepository.saveAll(pageData.getPageScoreList());
 			metaDataRepository.save(pageData.getMetaData());
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return dataListRepository.save(pageData);
+	}
+
+	public void saveTest1(int type) {
+		// TODO Auto-generated method stub
+		int start = 0;
+		OutPutDataList pageData = null;
+		try {
+			pageData = dataExtract.pageDataExtract(type, start);
+			scoreRepository.saveAll(pageData.getPageScoreList());
+			metaDataRepository.save(pageData.getMetaData());
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

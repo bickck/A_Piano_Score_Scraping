@@ -3,7 +3,7 @@ package com.piano.score.web.netconnect;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import com.piano.score.mvc.repositorydomain.MetaData;
+import com.piano.score.mvc.repodomain.page.MetaData;
 
 public interface ImslpConnect {
 

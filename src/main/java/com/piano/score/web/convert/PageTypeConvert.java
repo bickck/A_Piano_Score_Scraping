@@ -1,6 +1,8 @@
-package com.piano.score.pagedomain;
+package com.piano.score.web.convert;
 
 import javax.persistence.AttributeConverter;
+
+import com.piano.score.pagedomain.PageType;
 
 public class PageTypeConvert implements AttributeConverter<PageType, String> {
 

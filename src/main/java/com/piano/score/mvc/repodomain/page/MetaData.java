@@ -1,4 +1,4 @@
-package com.piano.score.mvc.repositorydomain;
+package com.piano.score.mvc.repodomain.page;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.piano.score.pagedomain.ResultAvailableConvert;
+import com.piano.score.web.convert.ResultAvailableConvert;
 
 @Entity
 public class MetaData {

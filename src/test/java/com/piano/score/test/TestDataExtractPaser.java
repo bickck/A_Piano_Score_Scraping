@@ -11,8 +11,8 @@ import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.mvc.repositorydomain.MetaData;
-import com.piano.score.mvc.repositorydomain.ScoreList;
+import com.piano.score.mvc.repodomain.page.MetaData;
+import com.piano.score.mvc.repodomain.page.ScoreList;
 import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.netconnect.ImslpConnect;

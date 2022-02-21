@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.piano.score.mvc.repodomain.page.BaseInformation;
+import com.piano.score.mvc.repodomain.page.OutPutDataList;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.mvc.repository.MetaDataRepository;
 import com.piano.score.mvc.repository.PageDataListRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
-import com.piano.score.mvc.repositorydomain.BaseInformation;
-import com.piano.score.mvc.repositorydomain.OutPutDataList;
 import com.piano.score.mvc.service.WebDataService;
 import com.piano.score.pagedomain.PageData;
 import com.piano.score.web.dataprocess.DataExtract;

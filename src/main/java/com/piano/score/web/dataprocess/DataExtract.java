@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
-import com.piano.score.mvc.repositorydomain.MetaData;
-import com.piano.score.mvc.repositorydomain.OutPutDataList;
-import com.piano.score.mvc.repositorydomain.ScoreList;
+import com.piano.score.mvc.repodomain.page.MetaData;
+import com.piano.score.mvc.repodomain.page.OutPutDataList;
+import com.piano.score.mvc.repodomain.page.ScoreList;
 import com.piano.score.pagedomain.PageData;
 
 public interface DataExtract {

@@ -1,4 +1,4 @@
-package com.piano.score.pagedomain;
+package com.piano.score.web.convert;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

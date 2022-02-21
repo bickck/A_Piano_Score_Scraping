@@ -5,8 +5,8 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.piano.score.mvc.repositorydomain.OutPutDataList;
-import com.piano.score.mvc.repositorydomain.ScoreList;
+import com.piano.score.mvc.repodomain.page.OutPutDataList;
+import com.piano.score.mvc.repodomain.page.ScoreList;
 
 public interface WebDataService {
 

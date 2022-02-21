@@ -22,9 +22,16 @@ public class AopTest {
 		method = ScoreSiteConnectImpl.class.getMethod("saveTest1", int.class);
 	}
 
-	@Test
+	
 	public void aopTest() {
 		String expression = "execution(* com.piano.score.mvc.serviceImpl.*..saveTest1(..))";
+		pointcut.setExpression(expression);
+		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
+	}
+	
+	@Test
+	public void aopTest1() {
+		String expression = "execution(* *.*..saveTest1(..))";
 		pointcut.setExpression(expression);
 		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
 	}

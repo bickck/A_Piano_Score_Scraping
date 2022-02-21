@@ -1,4 +1,4 @@
-package com.piano.score.pagedomain;
+package com.piano.score.mvc.repodomain.musicscore;
 
 public class Artists {
 

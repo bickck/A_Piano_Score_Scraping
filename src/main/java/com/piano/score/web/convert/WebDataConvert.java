@@ -11,8 +11,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.mvc.repositorydomain.MetaData;
-import com.piano.score.mvc.repositorydomain.ScoreList;
+import com.piano.score.mvc.repodomain.page.MetaData;
+import com.piano.score.mvc.repodomain.page.ScoreList;
 import com.piano.score.pagedomain.PageMetaData;
 import com.piano.score.pagedomain.PageScoreList;
 

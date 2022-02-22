@@ -12,6 +12,8 @@ import com.piano.score.pagedomain.PageData;
 public interface DataExtract {
 
 	OutPutDataList pageDataExtract(int type ,int start) throws Exception;
+	
+	MetaData pageMetaData();
 
 	Long typeOneWebDataCount();
 

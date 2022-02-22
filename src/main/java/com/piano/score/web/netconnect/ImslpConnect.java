@@ -15,12 +15,6 @@ public interface ImslpConnect {
 	static String mainUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=1/retformat=json";
 	static String typeAndStartUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
 
-	String connectToIMSLP(String url) throws Exception;
-
-	String defaultUrlSet(String sort, Integer type, Integer start);
-
-	String typeAndStartUrlSet(Integer type, Integer start);
-
-	boolean moreresultsavailable() throws ParseException;
+	String connectWebSite(int type, int start) throws Exception;
 
 }

@@ -6,11 +6,13 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Method;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.assertj.core.api.Assertions;
 
 import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
+import com.piano.score.web.dataprocess.WebDataExtract;
 
 public class AopTest {
 
@@ -19,7 +21,7 @@ public class AopTest {
 
 	@BeforeEach
 	public void init() throws NoSuchMethodException {
-		method = ScoreSiteConnectImpl.class.getMethod("saveTest1", int.class);
+		method = WebDataExtract.class.getMethod("webDataCount", int.class);
 	}
 
 	
@@ -29,10 +31,18 @@ public class AopTest {
 		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
 	}
 	
-	@Test
+	//@Test
 	public void aopTest1() {
 		String expression = "execution(* *.*..saveTest1(..))";
 		pointcut.setExpression(expression);
 		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
+	}
+	
+	@Test
+	@DisplayName("AOP-WebDataCountMethod-Test")
+	public void aopTest2() {
+		String expression = "execution(* *..webDataCount(..))";
+		pointcut.setExpression(expression);
+		assertTrue(pointcut.matches(method, WebDataExtract.class));
 	}
 }

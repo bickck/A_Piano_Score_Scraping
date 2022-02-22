@@ -84,11 +84,12 @@ public class ScoreSiteConnectImpl implements WebDataService {
 
 		while (true) {
 			OutPutDataList pageData = dataExtract.pageDataExtract(type, start);
-
+			scoreRepository.saveAll(pageData.getPageScoreList());
+			metaDataRepository.save(pageData.getMetaData());
+			dataListRepository.save(pageData);
 		}
 	}
 
-	@Override
 	public OutPutDataList saveTest(int type) {
 		// TODO Auto-generated method stub
 		int start = 0;
@@ -104,20 +105,5 @@ public class ScoreSiteConnectImpl implements WebDataService {
 		}
 
 		return dataListRepository.save(pageData);
-	}
-
-	public void saveTest1(int type) {
-		// TODO Auto-generated method stub
-		int start = 0;
-		OutPutDataList pageData = null;
-		try {
-			pageData = dataExtract.pageDataExtract(type, start);
-			scoreRepository.saveAll(pageData.getPageScoreList());
-			metaDataRepository.save(pageData.getMetaData());
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

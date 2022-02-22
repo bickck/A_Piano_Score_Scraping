@@ -45,9 +45,4 @@ public class ScrapingController {
 		siteConnectService.allWebDataCollect(type);
 	}
 
-	@GetMapping("/saveTest")
-	public void saveTest() throws Exception {
-		int type = 1;
-		siteConnectService.saveTest(type);
-	}
 }

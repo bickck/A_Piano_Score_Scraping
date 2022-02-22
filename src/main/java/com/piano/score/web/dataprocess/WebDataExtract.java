@@ -21,10 +21,6 @@ public class WebDataExtract implements DataExtract {
 	@Autowired
 	private ImslpConnect imslpConnect;
 
-	public WebDataExtract() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public OutPutDataList pageDataExtract(int type, int start) throws Exception {
 		// TODO Auto-generated method stub
@@ -32,18 +28,22 @@ public class WebDataExtract implements DataExtract {
 		PageScoreList data = null;
 
 		try {
-			String url = imslpConnect.typeAndStartUrlSet(type, start);
-			String result = imslpConnect.connectToIMSLP(url);
+
+			String result = imslpConnect.connectWebSite(type, start);
 			dataExtract = new WebDataConvert(result);
-			// data = new PageScoreList(dataExtract.dataListExtract(),
-			// dataExtract.metadataExtract());
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return new OutPutDataList(dataExtract.dataListExtract(),dataExtract.metadataExtract());
+		return new OutPutDataList(dataExtract.dataListExtract(), dataExtract.metadataExtract());
+	}
+
+	@Override
+	public MetaData pageMetaData() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -73,17 +73,13 @@ public class WebDataExtract implements DataExtract {
 		return result;
 	}
 
-	private Long webDataCount(int type) throws Exception {
+	public Long webDataCount(int type) throws Exception {
 		int start = 0, end = 0, endData = 0;
 		boolean isCheck = true;
-		// 탐색 알고리즘
-
-		Long StartTime = System.currentTimeMillis();
 
 		while (isCheck) {
 
-			String url = imslpConnect.typeAndStartUrlSet(type, end);
-			String data = imslpConnect.connectToIMSLP(url);
+			String data = imslpConnect.connectWebSite(type, end);
 			WebDataConvert dataExtractParser = new WebDataConvert(data);
 
 			if (dataExtractParser.metadataExtract().isMoreResultAvailable()) {
@@ -92,15 +88,15 @@ public class WebDataExtract implements DataExtract {
 				isCheck = false;
 			}
 		}
-		System.out.println(end);
+
 		isCheck = true;
 
 		while (isCheck) {
 
 			int mid = (end + start) / 2;
 
-			String url = imslpConnect.typeAndStartUrlSet(type, mid);
-			String data = imslpConnect.connectToIMSLP(url);
+			String data = imslpConnect.connectWebSite(type, mid);
+
 			WebDataConvert dataExtractParser = new WebDataConvert(data);
 
 			if (dataExtractParser.dataSize() == 1) {
@@ -111,16 +107,13 @@ public class WebDataExtract implements DataExtract {
 			}
 			if (dataExtractParser.dataSize() < 1000 && dataExtractParser.dataSize() > 1) {
 				end = mid;
-				url = imslpConnect.typeAndStartUrlSet(1, end);
-				data = imslpConnect.connectToIMSLP(url);
+
+				data = imslpConnect.connectWebSite(1, end);
 				dataExtractParser = new WebDataConvert(data);
 				endData = dataExtractParser.dataSize();
 				isCheck = false;
 			}
 		}
-		Long EndTime = System.currentTimeMillis();
-
-		System.out.println("time : " + (EndTime - StartTime) / 1000 + "초");
 
 		return (long) (((end - 1) * 1000) + endData);
 	}

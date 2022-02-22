@@ -40,52 +40,29 @@ public class ImslpConnectionImpl implements ImslpConnect {
 	// private String testLink =
 	// "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=json";
 
-	private String result;
-
-	public ImslpConnectionImpl() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
-	public String defaultUrlSet(String sort, Integer type, Integer start) {
+	public String connectWebSite(int type, int start) throws Exception {
 		// TODO Auto-generated method stub
-		String url = defaultUrl + "sort=" + sort + "/type=" + type.toString() + "/start=" + start.toString()
-				+ "/retformat=json";
-		return url;
-	}
-
-	@Override
-	public String typeAndStartUrlSet(Integer type, Integer start) {
-		// TODO Auto-generated method stub
-		String url = typeAndStartUrl + "sort=id/type=" + type.toString() + "/start=" + start.toString()
-				+ "/retformat=json";
-		return url;
-	}
-
-	@Override
-	public String connectToIMSLP(String url) throws Exception {
-		// TODO Auto-generated method stub
-
+		String url = urlSetting(type, start);
+		String result = null;
 		if (url != null) {
 			URL link = new URL(url);
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(link.openStream(), "UTF-8"));
-			String result = bufferedReader.readLine();
-			this.result = result;
+			result = bufferedReader.readLine();
+
 		}
 
 		return result;
 	}
 
-	@Override
-	public boolean moreresultsavailable() throws ParseException {
-		// TODO Auto-generated method stub
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
+	private String urlSetting(int type, int start) {
+		String url = typeAndStartUrl + "sort=id/type=" + type + "/start=" + start + "/retformat=json";
+		return url;
+	}
 
-		JSONObject metadata = (JSONObject) jsonObject.get("metadata");
-		Map<String, String> map = (Map) metadata.clone();
-
-		return Boolean.valueOf(map.get("moreresultsavailable"));
+	private String urlSetting(String sort, int type, int start) {
+		String url = defaultUrl + "sort=" + sort + "/type=" + type + "/start=" + start + "/retformat=json";
+		return url;
 	}
 
 }

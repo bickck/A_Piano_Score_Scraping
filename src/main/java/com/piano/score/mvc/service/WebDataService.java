@@ -16,6 +16,4 @@ public interface WebDataService {
 
 	void allWebDataCollect(int type) throws Exception;
 	
-	OutPutDataList saveTest(int type);
-
 }

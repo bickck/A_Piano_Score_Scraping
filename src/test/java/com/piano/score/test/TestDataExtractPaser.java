@@ -27,21 +27,20 @@ public class TestDataExtractPaser {
 	public void test() throws Exception {
 		ImslpConnect connect = new ImslpConnectionImpl();
 
-		String result = connect.connectToIMSLP(testURL);
+		//String result = connect.connectToIMSLP(testURL);
 
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
+		//JSONParser jsonParser = new JSONParser();
+		//JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
 		int i = 1;
 
-		JSONObject data = (JSONObject) jsonObject.get(String.valueOf(i));
-
-		Map<String, String> map = (Map<String, String>) data.clone();
+		//.connect. data = (JSONObject) jsonObject.get(String.valueOf(i));
+		//Map<String, String> map = (Map<String, String>) data.clone();
 
 		// System.out.println(map.toString());
 
 		// assertNotNull(result);
 
-		WebDataConvert dataExtractParser = new WebDataConvert(result);
+		//WebDataConvert dataExtractParser = new WebDataConvert(result);
 
 		//List<ScoreInfoList> lists = dataExtractParser.dataListExtract();
 

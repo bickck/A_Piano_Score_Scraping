@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.assertj.core.api.Assertions;
 
+import com.piano.score.mvc.controller.TestController;
 import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
 import com.piano.score.web.dataprocess.WebDataExtract;
 
@@ -21,28 +22,35 @@ public class AopTest {
 
 	@BeforeEach
 	public void init() throws NoSuchMethodException {
-		method = WebDataExtract.class.getMethod("webDataCount", int.class);
+		method = TestController.class.getMethod("aopTest");
 	}
 
-	
 	public void aopTest() {
 		String expression = "execution(* com.piano.score.mvc.serviceImpl.*..saveTest1(..))";
 		pointcut.setExpression(expression);
 		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
 	}
-	
-	//@Test
+
+	// @Test
 	public void aopTest1() {
 		String expression = "execution(* *.*..saveTest1(..))";
 		pointcut.setExpression(expression);
 		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
 	}
-	
-	@Test
+
+	// @Test
 	@DisplayName("AOP-WebDataCountMethod-Test")
 	public void aopTest2() {
-		String expression = "execution(* *..webDataCount(..))";
+		String expression = "execution(* com.piano.score.web.dataprocess..*.*(..))";
 		pointcut.setExpression(expression);
 		assertTrue(pointcut.matches(method, WebDataExtract.class));
+	}
+
+	@Test
+	@DisplayName("AOP-test")
+	public void aopTest3() {
+		String expression = "execution( * com.piano.score.mvc.controller..*.*(..))";
+		pointcut.setExpression(expression);
+		assertTrue(pointcut.matches(method, TestController.class));
 	}
 }

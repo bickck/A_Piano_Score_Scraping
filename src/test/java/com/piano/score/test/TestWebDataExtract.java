@@ -6,10 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.piano.score.mvc.repodomain.page.ScoreList;
@@ -18,35 +21,30 @@ import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
+@SpringBootTest
 public class TestWebDataExtract {
 
+	@Autowired
+	private ImslpConnect imslpConnect;
+
+	@Autowired
+	private WebDataExtract dataExtract;
+
+	@Mock
+	private ProceedingJoinPoint joinPoint;
+	
+	
+	
 	@Test
-	public void allWebDataCountTest() {
-
-	}
-
-	public void defaultUrlTest() {
-		ImslpConnect connect = new ImslpConnectionImpl();
-
-		//String url = connect.defaultUrlSetting("id", 1, 0);
-
-		// System.out.println("defaultUrlTest : " + url);
-
-	}
-
-	public void typeAndStartUrlSetting() {
-		ImslpConnect connect = new ImslpConnectionImpl();
-
-		//String url = connect.typeAndStartUrlSetting(1, 100000);
-
-		// System.out.println("typeAndStartUrlSetting : " + url);
-
+	public void test() {
+		Long value = dataExtract.typeOneWebDataCount();
+		System.out.println(value);
 	}
 
 	public void connectTest() throws Exception {
 		ImslpConnect connect = new ImslpConnectionImpl();
-		//String url = connect.typeAndStartUrlSetting(1, 100000);
-		//String test = connect.connectToIMSLP(url);
+		// String url = connect.typeAndStartUrlSetting(1, 100000);
+		// String test = connect.connectToIMSLP(url);
 		// System.out.println(test.length());
 		// assertNotNull(test);
 		// 148336 148334
@@ -54,7 +52,7 @@ public class TestWebDataExtract {
 
 	public void jsonMapKeyTest() throws Exception {
 		ImslpConnect connect = new ImslpConnectionImpl();
-		//String url = connect.typeAndStartUrlSetting(1, 100000);
+		// String url = connect.typeAndStartUrlSetting(1, 100000);
 
 		Long start = System.currentTimeMillis();
 		// String result = connect.connectToIMSLP(url);
@@ -66,8 +64,8 @@ public class TestWebDataExtract {
 
 	public void dataListExtractTest() throws Exception {
 		ImslpConnect connect = new ImslpConnectionImpl();
-		//String url = connect.typeAndStartUrlSetting(1, 0);
-		//String result = connect.connectToIMSLP(url);
+		// String url = connect.typeAndStartUrlSetting(1, 0);
+		// String result = connect.connectToIMSLP(url);
 		/// DataExtractParser dataExtract = new DataExtractParser();
 
 		// List<Score> lists = dataExtract.dataListExtract(result);
@@ -78,12 +76,12 @@ public class TestWebDataExtract {
 
 	public void dataListCount() {
 		// ImslpConnect connect = new ImslpConnectionImpl();
-		//String url = connect.typeAndStartUrlSetting(1, 0);
+		// String url = connect.typeAndStartUrlSetting(1, 0);
 		// DataExtractParser dataExtract = new DataExtractParser();
 
 		try {
 
-		//	String result = connect.connectToIMSLP(url);
+			// String result = connect.connectToIMSLP(url);
 
 			// List<Score> lists = dataExtract.dataListExtract(result);
 			// System.out.println(lists.size());
@@ -94,11 +92,11 @@ public class TestWebDataExtract {
 		}
 	}
 
-	@Test
+	// @Test
 	public void allWebDataCount() {
-		WebDataExtract dataExtract = new WebDataExtract();
+		// WebDataExtract dataExtract = new WebDataExtract();
 
-		//int size = dataExtract.allWebDataCount(1);
-		//System.out.println(size);
+		// int size = dataExtract.allWebDataCount(1);
+		// System.out.println(size);
 	}
 }

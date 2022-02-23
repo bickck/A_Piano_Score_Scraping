@@ -90,20 +90,4 @@ public class ScoreSiteConnectImpl implements WebDataService {
 		}
 	}
 
-	public OutPutDataList saveTest(int type) {
-		// TODO Auto-generated method stub
-		int start = 0;
-		OutPutDataList pageData = null;
-		try {
-			pageData = dataExtract.pageDataExtract(type, start);
-			scoreRepository.saveAll(pageData.getPageScoreList());
-			metaDataRepository.save(pageData.getMetaData());
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return dataListRepository.save(pageData);
-	}
 }

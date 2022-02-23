@@ -3,6 +3,7 @@ package com.piano.score.web.dataprocess;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repodomain.page.MetaData;
@@ -15,7 +16,7 @@ import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
-@Configuration
+@Component
 public class WebDataExtract implements DataExtract {
 
 	@Autowired
@@ -73,7 +74,7 @@ public class WebDataExtract implements DataExtract {
 		return result;
 	}
 
-	public Long webDataCount(int type) throws Exception {
+	public long webDataCount(int type) throws Exception {
 		int start = 0, end = 0, endData = 0;
 		boolean isCheck = true;
 
@@ -115,6 +116,6 @@ public class WebDataExtract implements DataExtract {
 			}
 		}
 
-		return (long) (((end - 1) * 1000) + endData);
+		return (((end - 1) * 1000) + endData);
 	}
 }

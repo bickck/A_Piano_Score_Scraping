@@ -21,7 +21,7 @@ public class TestController {
 	public String test() {
 		String result = "Success";
 
-		System.out.println(webDataExtract.typeOneWebDataCount());
+		webDataExtract.Test();
 
 		return result;
 	}

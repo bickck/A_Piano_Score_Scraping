@@ -118,4 +118,8 @@ public class WebDataExtract implements DataExtract {
 
 		return (((end - 1) * 1000) + endData);
 	}
+
+	public void Test() {
+
+	}
 }

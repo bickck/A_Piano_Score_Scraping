@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Marker;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ public class PageDataLog {
 		Object returnValue = joinPoint.proceed();
 		long endTime = System.currentTimeMillis();
 
-		logger.info("TimeRecord = {}ms", endTime - startTime);
+		logger.info("TimeRecord = {}ms , target = {}", endTime - startTime, joinPoint.getTarget());
 
 		return (Long) returnValue;
 	}
@@ -52,13 +53,26 @@ public class PageDataLog {
 		OutPutDataList returnValue = (OutPutDataList) joinPoint.proceed();
 		long endTime = System.currentTimeMillis();
 
-		logger.info("TimeRecord = {}ms", endTime - startTime);
-		logger.info("Record Score Data List = {} ", returnValue.getMetaData().toString());
+		/*
+		 * 데이터를 파일에 저장할 필요 있음.
+		 */
+
+		logger.info("TimeRecord = {} ms, target = {}", endTime - startTime, joinPoint.getSignature());
+		logger.info("Recording Score MetaData List = {} ", returnValue.getMetaData().toString());
 
 		return returnValue;
 	}
 
-	// @Around(value = "aopDoTest()")
+	@Pointcut("execution(* com.piano.score.web.dataprocess..Test(..))")
+	public void aopDoTest() {
+	}
+
+	@Before(value = "aopDoTest()")
+	public void beforTest() {
+		logger.info("success before print");
+	}
+
+	@Around(value = "aopDoTest()")
 	public Long aopDoAroundTest(ProceedingJoinPoint joinpoint) throws Throwable {
 
 		logger.info("target = {}", joinpoint.getSignature());

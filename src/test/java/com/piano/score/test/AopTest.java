@@ -22,7 +22,7 @@ public class AopTest {
 
 	@BeforeEach
 	public void init() throws NoSuchMethodException {
-		method = TestController.class.getMethod("aopTest");
+		method = WebDataExtract.class.getMethod("typeOneWebDataCount");
 	}
 
 	public void aopTest() {
@@ -39,18 +39,27 @@ public class AopTest {
 	}
 
 	// @Test
-	@DisplayName("AOP-WebDataCountMethod-Test")
+	// @DisplayName("AOP-WebDataCountMethod-Test")
 	public void aopTest2() {
 		String expression = "execution(* com.piano.score.web.dataprocess..*.*(..))";
 		pointcut.setExpression(expression);
 		assertTrue(pointcut.matches(method, WebDataExtract.class));
 	}
 
-	@Test
-	@DisplayName("AOP-test")
+	// @Test
+	// @DisplayName("AOP-test")
 	public void aopTest3() {
-		String expression = "execution( * com.piano.score.mvc.controller..*.*(..))";
+		String expression = "execution( * com.piano.score.web..*.type*(..))";
 		pointcut.setExpression(expression);
-		assertTrue(pointcut.matches(method, TestController.class));
+		assertTrue(pointcut.matches(method, WebDataExtract.class));
+	}
+
+	@Test
+	@DisplayName("pageWebExtract")
+	public void aopTest4() {
+		String expression = "execution(* com.piano.score.web.dataprocess..*pageData*(..))";
+		pointcut.setExpression(expression);
+		assertFalse(pointcut.matches(method, WebDataExtract.class));
+
 	}
 }

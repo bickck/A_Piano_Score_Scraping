@@ -18,17 +18,17 @@ public class TestController {
 	private WebDataExtract webDataExtract;
 
 	@GetMapping("/test")
-	public String test(@RequestParam int a) {
+	public String test() {
 		String result = "Success";
 
-		long value = webDataExtract.typeOneWebDataCount();
+		System.out.println(webDataExtract.typeOneWebDataCount());
 
-		return String.valueOf(value);
+		return result;
 	}
 
 	@GetMapping("/testaop")
-	public String aopTest() {
-
+	public String aopTest() throws Exception {
+		webDataExtract.pageDataExtract(1, 1);
 		return "Success";
 	}
 }

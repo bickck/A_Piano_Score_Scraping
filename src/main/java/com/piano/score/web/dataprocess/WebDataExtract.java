@@ -50,7 +50,7 @@ public class WebDataExtract implements DataExtract {
 	@Override
 	public Long typeOneWebDataCount() {
 		// TODO Auto-generated method stub
-		Long result = (long) 0;
+		long result = 0;
 		try {
 			result = webDataCount(1);
 
@@ -65,7 +65,7 @@ public class WebDataExtract implements DataExtract {
 	@Override
 	public Long typeTwoWebDataCount() {
 		// TODO Auto-generated method stub
-		Long result = (long) 0;
+		long result = 0;
 		try {
 			result = webDataCount(2);
 		} catch (Exception e) {
@@ -74,7 +74,7 @@ public class WebDataExtract implements DataExtract {
 		return result;
 	}
 
-	public long webDataCount(int type) throws Exception {
+	private long webDataCount(int type) throws Exception {
 		int start = 0, end = 0, endData = 0;
 		boolean isCheck = true;
 

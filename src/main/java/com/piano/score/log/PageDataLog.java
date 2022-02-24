@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.piano.score.mvc.repodomain.page.OutPutDataList;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -20,38 +22,53 @@ public class PageDataLog {
 
 	private static final Logger logger = LoggerFactory.getLogger(PageDataLog.class);
 
-	// @Around("execution(* com.piano.score.web.dataprocess..*.*(..))")
-	public Long timeCount(ProceedingJoinPoint joinPoint) throws Throwable {
+	@Pointcut("execution( * com.piano.score.web.dataprocess..*.type*(..))")
+	public void doTimeRecord() {
+	}
 
-		logger.info("Strat Time Count : = {} " + joinPoint.getSignature());
+	@Pointcut("execution(* com.piano.score.web.dataprocess..*page*(..))")
+	public void doGetDataRecord() {
+
+	}
+
+	@Around("doTimeRecord()")
+	public Long timeRecord(ProceedingJoinPoint joinPoint) throws Throwable {
+
+		logger.info("Strat Time Recording = {} " + joinPoint.getSignature());
 
 		long startTime = System.currentTimeMillis();
-
-		Object o = joinPoint.proceed();
-
+		Object returnValue = joinPoint.proceed();
 		long endTime = System.currentTimeMillis();
 
-		logger.info("time = {}ms", endTime - startTime);
+		logger.info("TimeRecord = {}ms", endTime - startTime);
 
-		return null;
+		return (Long) returnValue;
 	}
 
-	@Pointcut("execution( * com.piano.score.mvc.controller..*.*(..))")
-	public void aopDoTest() {
+	@Around(value = "doGetDataRecord()")
+	public OutPutDataList doDataRecord(ProceedingJoinPoint joinPoint) throws Throwable {
+
+		long startTime = System.currentTimeMillis();
+		OutPutDataList returnValue = (OutPutDataList) joinPoint.proceed();
+		long endTime = System.currentTimeMillis();
+
+		logger.info("TimeRecord = {}ms", endTime - startTime);
+		logger.info("Record Score Data List = {} ", returnValue.getMetaData().toString());
+
+		return returnValue;
 	}
 
-	@Around(value = "aopDoTest()")
-	public void aopDoAroundTest(ProceedingJoinPoint joinpoint) throws Throwable {
+	// @Around(value = "aopDoTest()")
+	public Long aopDoAroundTest(ProceedingJoinPoint joinpoint) throws Throwable {
 
-		logger.info("getSignature = {}", joinpoint.getSignature());
-		logger.info("getTarget = {}", joinpoint.getTarget());
-		logger.info("getArgs = {}", joinpoint.getArgs());
-		logger.info("getSourceLocation = {}", joinpoint.getSourceLocation());
-		logger.info("getStaticPart = {}", joinpoint.getStaticPart());
+		logger.info("target = {}", joinpoint.getSignature());
 
-		joinpoint.getTarget();
-		//Object o = joinpoint.proceed();
-		//logger.info("webDataExtract value = {}", o.toString());
+		Object returnValue = joinpoint.proceed();
+
+		logger.info("returnValue = {}", returnValue);
+
+		return (Long) returnValue;
+
 	}
 
 }

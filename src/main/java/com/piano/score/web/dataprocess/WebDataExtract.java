@@ -121,5 +121,11 @@ public class WebDataExtract implements DataExtract {
 
 	public void Test() {
 
+		try {
+			throw new Exception("오류 테스트");
+		} catch (Exception e) {
+
+		}
+
 	}
 }

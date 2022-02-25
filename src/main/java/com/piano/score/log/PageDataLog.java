@@ -2,7 +2,9 @@ package com.piano.score.log;
 
 import org.aopalliance.intercept.Joinpoint;
 import org.apache.logging.log4j.Marker;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -62,6 +64,10 @@ public class PageDataLog {
 
 		return returnValue;
 	}
+	
+	/*
+	 * =============================================================================================
+	 */
 
 	@Pointcut("execution(* com.piano.score.web.dataprocess..Test(..))")
 	public void aopDoTest() {
@@ -70,6 +76,13 @@ public class PageDataLog {
 	@Before(value = "aopDoTest()")
 	public void beforTest() {
 		logger.info("success before print");
+	}
+
+	@AfterThrowing(value = "aopDoTest()",throwing = "throwable")
+	public void throwing(JoinPoint joinPoint, Throwable throwable) {
+		logger.info(" --- throwing --");
+		
+		throwable.getStackTrace();
 	}
 
 	@Around(value = "aopDoTest()")

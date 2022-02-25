@@ -4,6 +4,8 @@ import org.aopalliance.intercept.Joinpoint;
 import org.apache.logging.log4j.Marker;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -77,12 +79,22 @@ public class PageDataLog {
 	public void beforTest() {
 		logger.info("success before print");
 	}
+	
+	@After(value ="aopDoTest()")
+	public void afterTest() {
+		logger.info("success after print");
+	}
+	
+	@AfterReturning(value = "aopDoTest()",returning = "")
+	public void afterRetruningTest() {
+		logger.info("success afterReturningTest print");
+	}
 
-	@AfterThrowing(value = "aopDoTest()",throwing = "throwable")
-	public void throwing(JoinPoint joinPoint, Throwable throwable) {
+	@AfterThrowing(value = "aopDoTest()",throwing = "ex")
+	public void throwing(JoinPoint joinPoint, Exception ex) {
 		logger.info(" --- throwing --");
-		
-		throwable.getStackTrace();
+		logger.info("JoinPoint Signature"+joinPoint.getSignature());
+		logger.info("throwing", ex.fillInStackTrace());
 	}
 
 	@Around(value = "aopDoTest()")

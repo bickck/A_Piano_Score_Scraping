@@ -29,9 +29,13 @@ public class PianoScoreApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void init() {
-		BaseInformation info = new BaseInformation(0,0,0);
+		BaseInformation baseInformation = baseInfoRepository.findById(1);
 		
-		baseInfoRepository.save(info);
+		if(baseInformation == null) {
+			BaseInformation info = new BaseInformation(0,0,0);
+			baseInfoRepository.save(info);
+		}
+			
 		
 	}
 

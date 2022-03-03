@@ -6,4 +6,5 @@ import com.piano.score.mvc.repodomain.page.BaseInformation;
 
 public interface BaseInfoRepository extends JpaRepository<BaseInformation, Long> {
 
+	BaseInformation findById(int id);
 }

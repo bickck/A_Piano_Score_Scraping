@@ -13,7 +13,7 @@ public interface DataExtract {
 
 	OutPutDataList pageDataExtract(int type ,int start) throws Exception;
 	
-	MetaData pageMetaData();
+	
 
 	Long typeOneWebDataCount();
 

@@ -42,12 +42,6 @@ public class WebDataExtract implements DataExtract {
 	}
 
 	@Override
-	public MetaData pageMetaData() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Long typeOneWebDataCount() {
 		// TODO Auto-generated method stub
 		long result = 0;

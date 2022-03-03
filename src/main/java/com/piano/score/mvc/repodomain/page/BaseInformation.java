@@ -26,10 +26,18 @@ public class BaseInformation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BaseInformation(Long typeOneCount, Long typeTwoCount) {
+	public BaseInformation(Long typeOneCount, Long typeTwoCount, Long total) {
 		super();
 		this.typeOneCount = typeOneCount;
 		this.typeTwoCount = typeTwoCount;
+		this.total = total;
+	}
+
+	public BaseInformation(int i, int j, int total) {
+		super();
+		this.typeOneCount = (long) i;
+		this.typeTwoCount = (long) j;
+		this.total = (long) total;
 	}
 
 	public Long getId() {

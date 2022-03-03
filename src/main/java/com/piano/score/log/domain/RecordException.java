@@ -23,4 +23,34 @@ public class RecordException {
 	@CreationTimestamp
 	private Timestamp createTime;
 
+	public RecordException(int id, Long location) {
+		super();
+		this.id = id;
+		this.location = location;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Long getLocation() {
+		return location;
+	}
+
+	public void setLocation(Long location) {
+		this.location = location;
+	}
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
 }

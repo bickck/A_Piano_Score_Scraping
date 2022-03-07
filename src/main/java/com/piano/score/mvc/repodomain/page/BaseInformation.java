@@ -33,11 +33,11 @@ public class BaseInformation {
 		this.total = total;
 	}
 
-	public BaseInformation(int i, int j, int total) {
+	public BaseInformation(int typeOneCount, int typeTwoCount, int total) {
 		super();
-		this.typeOneCount = (long) i;
-		this.typeTwoCount = (long) j;
-		this.total = (long) total;
+		this.typeOneCount = Long.valueOf(typeOneCount);
+		this.typeTwoCount = Long.valueOf(typeTwoCount);
+		this.total = Long.valueOf(total);
 	}
 
 	public Long getId() {

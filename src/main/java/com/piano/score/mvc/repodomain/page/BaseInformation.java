@@ -33,12 +33,19 @@ public class BaseInformation {
 		this.total = total;
 	}
 
+	public BaseInformation(long typeOneCount, long typeTwoCount, long total) {
+		super();
+		this.typeOneCount = typeOneCount;
+		this.typeTwoCount = typeTwoCount;
+		this.total = total;
+	}
 	public BaseInformation(int typeOneCount, int typeTwoCount, int total) {
 		super();
-		this.typeOneCount = Long.valueOf(typeOneCount);
-		this.typeTwoCount = Long.valueOf(typeTwoCount);
-		this.total = Long.valueOf(total);
+		this.typeOneCount = (long) typeOneCount;
+		this.typeTwoCount = (long) typeTwoCount;
+		this.total = (long) total;
 	}
+
 
 	public Long getId() {
 		return id;

@@ -1,4 +1,4 @@
-package com.piano.score.log;
+package com.piano.score.log.record;
 
 import org.aopalliance.intercept.Joinpoint;
 import org.apache.logging.log4j.Marker;
@@ -23,9 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Aspect
 @Component
-public class PageDataLog {
+public class MeasureTimeLog {
 
-	private static final Logger logger = LoggerFactory.getLogger(PageDataLog.class);
+	private static final Logger logger = LoggerFactory.getLogger(MeasureTimeLog.class);
 
 	@Pointcut("execution( * com.piano.score.web.dataprocess..*.type*(..))")
 	public void doTimeRecord() {
@@ -41,11 +41,7 @@ public class PageDataLog {
 
 		logger.info("Strat Time Recording = {} " + joinPoint.getSignature());
 
-		long startTime = System.currentTimeMillis();
-		Object returnValue = joinPoint.proceed();
-		long endTime = System.currentTimeMillis();
-
-		logger.info("TimeRecord = {}ms , target = {}", endTime - startTime, joinPoint.getTarget());
+		Object returnValue = counting(joinPoint);
 
 		return (Long) returnValue;
 	}
@@ -53,22 +49,25 @@ public class PageDataLog {
 	@Around(value = "doGetDataRecord()")
 	public WebPageData doDataRecord(ProceedingJoinPoint joinPoint) throws Throwable {
 
-		long startTime = System.currentTimeMillis();
-		WebPageData returnValue = (WebPageData) joinPoint.proceed();
-		long endTime = System.currentTimeMillis();
+		Object returnValue = counting(joinPoint);
 
-		/*
-		 * 데이터를 파일에 저장할 필요 있음.
-		 */
 
-		logger.info("TimeRecord = {} ms, target = {}", endTime - startTime, joinPoint.getSignature());
-		logger.info("Recording Score MetaData List = {} ", returnValue.getMetaData().toString());
+		//logger.info("Recording Score MetaData List = {} ", returnValue.getMetaData().toString());
 
-		return returnValue;
+		return (WebPageData) returnValue;
 	}
-	
+
+	private Object counting(ProceedingJoinPoint joinPoint) throws Throwable {
+		long startTime = System.currentTimeMillis();
+		Object returnValue = joinPoint.proceed();
+		long endTime = System.currentTimeMillis();
+		logger.info("TimeRecord = {} ms, target = {}", endTime - startTime, joinPoint.getSignature());
+		return endTime - startTime;
+	}
+
 	/*
-	 * =============================================================================================
+	 * =============================================================================
+	 * ================
 	 */
 
 	@Pointcut("execution(* com.piano.score.web.dataprocess..Test(..))")
@@ -79,21 +78,21 @@ public class PageDataLog {
 	public void beforTest() {
 		logger.info("success before print");
 	}
-	
-	@After(value ="aopDoTest()")
+
+	@After(value = "aopDoTest()")
 	public void afterTest() {
 		logger.info("success after print");
 	}
-	
-	@AfterReturning(value = "aopDoTest()",returning = "")
+
+	@AfterReturning(value = "aopDoTest()", returning = "")
 	public void afterRetruningTest() {
 		logger.info("success afterReturningTest print");
 	}
 
-	@AfterThrowing(value = "aopDoTest()",throwing = "ex")
+	@AfterThrowing(value = "aopDoTest()", throwing = "ex")
 	public void throwing(JoinPoint joinPoint, Exception ex) {
 		logger.info(" --- throwing --");
-		logger.info("JoinPoint Signature"+joinPoint.getSignature());
+		logger.info("JoinPoint Signature" + joinPoint.getSignature());
 		logger.info("throwing", ex.fillInStackTrace());
 	}
 

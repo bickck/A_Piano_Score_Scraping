@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.piano.score.log.PageDataLog;
+import com.piano.score.log.record.MeasureTimeLog;
 import com.piano.score.web.dataprocess.WebDataExtract;
 
 @RestController
-@Import(PageDataLog.class)
+@Import(MeasureTimeLog.class)
 public class TestController {
 
 	@Autowired

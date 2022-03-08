@@ -8,7 +8,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
 import com.piano.score.log.domain.RecordException;
-import com.piano.score.log.repository.ExceptionRecordRepository;
+import com.piano.score.log.repository.RecordExceptionRepository;
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
@@ -18,7 +18,7 @@ import com.piano.score.web.scraping.ArtistScraping;
 public class PianoScoreApplication {
 
 	@Autowired
-	private ExceptionRecordRepository exceptionRepository;
+	private RecordExceptionRepository exceptionRepository;
 
 	@Autowired
 	private BaseInfoRepository baseInfoRepository;
@@ -29,15 +29,10 @@ public class PianoScoreApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void init() {
-		BaseInformation baseInformation = baseInfoRepository.findById(1);
-		
-		if(baseInformation == null) {
-			BaseInformation info = new BaseInformation(0,0,0);
-			baseInfoRepository.save(info);
-		}
-			
-		
+
+		BaseInformation info = new BaseInformation(0, 0, 0);
+		//baseInfoRepository.save(info);
+
 	}
 
-	
 }

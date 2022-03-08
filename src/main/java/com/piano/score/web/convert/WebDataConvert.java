@@ -11,9 +11,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
-import com.piano.score.mvc.repodomain.page.MetaData;
-import com.piano.score.mvc.repodomain.page.ScoreList;
-import com.piano.score.pagedomain.PageMetaData;
+import com.piano.score.mvc.repodomain.page.PageMetaData;
+import com.piano.score.mvc.repodomain.page.PageUrlList;
 import com.piano.score.pagedomain.PageScoreList;
 
 public class WebDataConvert {
@@ -28,7 +27,7 @@ public class WebDataConvert {
 		jsonObject = (JSONObject) jsonParser.parse(lists);
 	}
 
-	public MetaData metadataExtract() throws ParseException {
+	public PageMetaData metadataExtract() throws ParseException {
 		// TODO Auto-generated method stub
 
 		JSONObject metadata = (JSONObject) jsonObject.get("metadata");
@@ -37,10 +36,10 @@ public class WebDataConvert {
 		return metaDataParser(map);
 	}
 
-	public List<ScoreList> dataListExtract() throws ParseException {
+	public List<PageUrlList> dataListExtract() throws ParseException {
 		// TODO Auto-generated method stub
 
-		List<ScoreList> scoreMetaDatas = new ArrayList<ScoreList>();
+		List<PageUrlList> scoreMetaDatas = new ArrayList<PageUrlList>();
 
 		for (int i = 0; i < jsonObject.size() - 1; i++) {
 			JSONObject data = (JSONObject) jsonObject.get(String.valueOf(i));
@@ -53,7 +52,7 @@ public class WebDataConvert {
 			String intvals = String.valueOf(map.get("intvals"));
 			String permlink = String.valueOf(map.get("permlink"));
 
-			scoreMetaDatas.add(new ScoreList(id, type, parent, intvals, permlink));
+			scoreMetaDatas.add(new PageUrlList(id, type, parent, intvals, permlink));
 
 		}
 		return scoreMetaDatas;
@@ -64,7 +63,7 @@ public class WebDataConvert {
 		return size;
 	}
 
-	private MetaData metaDataParser(Map<String, String> map) {
+	private PageMetaData metaDataParser(Map<String, String> map) {
 
 		String start = String.valueOf(map.get("start"));
 		String limit = String.valueOf(map.get("limit"));
@@ -74,7 +73,7 @@ public class WebDataConvert {
 		String timestamp = String.valueOf(map.get("timestamp"));
 		String apiversion = String.valueOf(map.get("apiversion"));
 
-		return new MetaData(Integer.valueOf(start), Integer.valueOf(limit), sortby, sortdirection,
+		return new PageMetaData(Integer.valueOf(start), Integer.valueOf(limit), sortby, sortdirection,
 				Boolean.valueOf(moreseltsavilable), Long.valueOf(timestamp), Integer.valueOf(apiversion));
 	}
 

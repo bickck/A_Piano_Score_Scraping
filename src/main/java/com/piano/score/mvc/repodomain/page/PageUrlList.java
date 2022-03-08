@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ScoreList {
+public class PageUrlList {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +28,11 @@ public class ScoreList {
 	@Column(name = "PERMLINK")
 	private String permlink;
 
-	public ScoreList() {
+	public PageUrlList() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScoreList(String pageId, String type, String parent, String intvals, String permlink) {
+	public PageUrlList(String pageId, String type, String parent, String intvals, String permlink) {
 		super();
 
 		this.pageId = pageId;

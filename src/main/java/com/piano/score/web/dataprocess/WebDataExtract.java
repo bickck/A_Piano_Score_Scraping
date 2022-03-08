@@ -6,12 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import com.piano.score.mvc.repodomain.page.BaseInformation;
-import com.piano.score.mvc.repodomain.page.MetaData;
-import com.piano.score.mvc.repodomain.page.OutPutDataList;
-import com.piano.score.mvc.repodomain.page.ScoreList;
+import com.piano.score.mvc.repodomain.page.PageMetaData;
+import com.piano.score.mvc.repodomain.page.WebPageData;
+import com.piano.score.mvc.repodomain.page.PageUrlList;
 import com.piano.score.mvc.repository.BaseInfoRepository;
-import com.piano.score.pagedomain.PageData;
-import com.piano.score.pagedomain.PageScoreList;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
@@ -23,10 +21,10 @@ public class WebDataExtract implements DataExtract {
 	private ImslpConnect imslpConnect;
 
 	@Override
-	public OutPutDataList pageDataExtract(int type, int start) throws Exception {
+	public WebPageData pageDataExtract(int type, int start) throws Exception {
 		// TODO Auto-generated method stub
 		WebDataConvert dataExtract = null;
-		PageScoreList data = null;
+	
 
 		try {
 
@@ -38,7 +36,7 @@ public class WebDataExtract implements DataExtract {
 			e.printStackTrace();
 		}
 
-		return new OutPutDataList(dataExtract.dataListExtract(), dataExtract.metadataExtract());
+		return new WebPageData(dataExtract.dataListExtract(), dataExtract.metadataExtract());
 	}
 
 	@Override

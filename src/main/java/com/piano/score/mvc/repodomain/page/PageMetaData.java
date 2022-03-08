@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import com.piano.score.web.convert.ResultAvailableConvert;
 
 @Entity
-public class MetaData {
+public class PageMetaData {
 
 	@Id
 	@Column(name = "PAGE_START")
@@ -34,7 +34,7 @@ public class MetaData {
 	@Column(name = "PAGE_VERSION")
 	private Integer version;
 
-	public MetaData() {
+	public PageMetaData() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -45,7 +45,7 @@ public class MetaData {
 				+ ", version=" + version + "]";
 	}
 
-	public MetaData(int start, int limit, String sortBy, String sortDirection, Boolean moreResultAvailable,
+	public PageMetaData(int start, int limit, String sortBy, String sortDirection, Boolean moreResultAvailable,
 			long timeStamp, int version) {
 		super();
 		this.start = start;

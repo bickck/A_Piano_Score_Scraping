@@ -8,7 +8,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
 import com.piano.score.log.domain.RecordException;
-import com.piano.score.log.repository.OccurExceptionRepository;
+import com.piano.score.log.repository.ExceptionRecordRepository;
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
@@ -18,7 +18,7 @@ import com.piano.score.web.scraping.ArtistScraping;
 public class PianoScoreApplication {
 
 	@Autowired
-	private OccurExceptionRepository exceptionRepository;
+	private ExceptionRecordRepository exceptionRepository;
 
 	@Autowired
 	private BaseInfoRepository baseInfoRepository;

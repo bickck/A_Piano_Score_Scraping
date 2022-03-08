@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
-import com.piano.score.mvc.repodomain.page.MetaData;
+import com.piano.score.mvc.repodomain.page.PageMetaData;
 
 public interface ImslpConnect {
 

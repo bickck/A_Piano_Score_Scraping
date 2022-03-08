@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.piano.score.mvc.repodomain.page.BaseInformation;
-import com.piano.score.mvc.repodomain.page.OutPutDataList;
+import com.piano.score.mvc.repodomain.page.WebPageData;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.mvc.repository.MetaDataRepository;
 import com.piano.score.mvc.repository.PageDataListRepository;
@@ -83,7 +83,7 @@ public class ScoreSiteConnectImpl implements WebDataService {
 		int start = 0;
 
 		while (true) {
-			OutPutDataList pageData = dataExtract.pageDataExtract(type, start);
+			WebPageData pageData = dataExtract.pageDataExtract(type, start);
 			scoreRepository.saveAll(pageData.getPageScoreList());
 			metaDataRepository.save(pageData.getMetaData());
 			dataListRepository.save(pageData);

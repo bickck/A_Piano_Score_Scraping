@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.piano.score.mvc.repodomain.page.OutPutDataList;
+import com.piano.score.mvc.repodomain.page.WebPageData;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,10 +51,10 @@ public class PageDataLog {
 	}
 
 	@Around(value = "doGetDataRecord()")
-	public OutPutDataList doDataRecord(ProceedingJoinPoint joinPoint) throws Throwable {
+	public WebPageData doDataRecord(ProceedingJoinPoint joinPoint) throws Throwable {
 
 		long startTime = System.currentTimeMillis();
-		OutPutDataList returnValue = (OutPutDataList) joinPoint.proceed();
+		WebPageData returnValue = (WebPageData) joinPoint.proceed();
 		long endTime = System.currentTimeMillis();
 
 		/*

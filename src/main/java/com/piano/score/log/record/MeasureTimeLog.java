@@ -51,8 +51,8 @@ public class MeasureTimeLog {
 
 		Object returnValue = counting(joinPoint);
 
-
-		//logger.info("Recording Score MetaData List = {} ", returnValue.getMetaData().toString());
+		// logger.info("Recording Score MetaData List = {} ",
+		// returnValue.getMetaData().toString());
 
 		return (WebPageData) returnValue;
 	}

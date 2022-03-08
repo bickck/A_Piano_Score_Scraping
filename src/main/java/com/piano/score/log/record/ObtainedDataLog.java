@@ -24,7 +24,7 @@ public class ObtainedDataLog {
 	@Around(value = "obtainedDataRecord()")
 	public void doGetData(ProceedingJoinPoint joinPoint) throws Throwable {
 		
-		
+		joinPoint.proceed();
 
 		//return returnValue;
 	}

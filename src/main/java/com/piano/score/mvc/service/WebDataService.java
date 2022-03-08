@@ -10,10 +10,8 @@ import com.piano.score.mvc.repodomain.page.PageUrlList;
 
 public interface WebDataService {
 
-	Long typeOneDataCount() throws Exception;
+	void allWebDataCollect(int type, int start) throws Exception;
 
-	Long typeTwoDataCount() throws Exception;
+	Long pageTypeDataAllCount(int type) throws Exception;
 
-	void allWebDataCollect(int type) throws Exception;
-	
 }

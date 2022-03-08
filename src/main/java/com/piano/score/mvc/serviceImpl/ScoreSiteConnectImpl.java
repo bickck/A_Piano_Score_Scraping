@@ -41,46 +41,37 @@ public class ScoreSiteConnectImpl implements WebDataService {
 
 	@Override
 	@Transactional
-	public Long typeOneDataCount() throws Exception {
-		// TODO Auto-generated method stub
+	public Long pageTypeDataAllCount(int type) throws Exception {
 
 		Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
-		if (base.get().getTypeOneCount() == 0) {
-			BaseInformation b = base.get();
-			Long result = dataExtract.typeOneWebDataCount();
+		if (type == 1) {
+			if (base.get().getTypeOneCount() == 0) {
+				BaseInformation b = base.get();
+				Long result = dataExtract.typeOneWebDataCount();
 
-			b.setTypeOneCount(result);
-			baseInfoRepository.save(b);
+				b.setTypeOneCount(result);
+				baseInfoRepository.save(b);
 
-			return result;
+				return result;
+			}
 		}
+		if (type == 2) {
+			if (base.get().getTypeTwoCount() == 0) {
 
-		return (long) base.get().getTypeOneCount();
+				BaseInformation b = base.get();
+				Long result = dataExtract.typeTwoWebDataCount();
+				b.setTypeTwoCount(result);
+
+				baseInfoRepository.save(b);
+
+				return result;
+			}
+		}
+		return null;
 	}
 
 	@Override
-	@Transactional
-	public Long typeTwoDataCount() throws Exception {
-		// TODO Auto-generated method stub
-		Optional<BaseInformation> base = baseInfoRepository.findById((long) 1);
-		if (base.get().getTypeTwoCount() == 0) {
-
-			BaseInformation b = base.get();
-			Long result = dataExtract.typeTwoWebDataCount();
-			b.setTypeTwoCount(result);
-
-			baseInfoRepository.save(b);
-
-			return result;
-		}
-
-		return (long) base.get().getTypeTwoCount();
-	}
-
-	@Override
-	public void allWebDataCollect(int type) throws Exception {
-		// TODO Auto-generated method stub
-		int start = 0;
+	public void allWebDataCollect(int type, int start) throws Exception {
 
 		while (true) {
 			WebPageData pageData = dataExtract.pageDataExtract(type, start);

@@ -27,22 +27,22 @@ public class ScrapingController {
 
 	@GetMapping("/TypeOneDataCount")
 	public String requestOneTypeDataCount() throws Exception {
-		long result = siteConnectService.typeOneDataCount();
-		String value = String.format("%,d", result);
-		return value + "개";
+		// long result = siteConnectService.typeOneDataCount();
+		// String value = String.format("%,d", result);
+		return "개";
 	}
 
 	@GetMapping("/TypeTwoDataCount")
 	public String requestTwoTypeDataCount() throws Exception {
-		long result = siteConnectService.typeTwoDataCount();
-		String value = String.format("%,d", result);
-		return value + "개";
+		// long result = siteConnectService.typeTwoDataCount();
+		// String value = String.format("%,d", result);
+		return "개";
 	}
 
 	@GetMapping("/allWebDataCollect")
 	public void allWebDataCollect() throws Exception {
 		int type = 1;
-		siteConnectService.allWebDataCollect(type);
+		// siteConnectService.allWebDataCollect(type);
 	}
 
 }

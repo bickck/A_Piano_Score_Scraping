@@ -72,6 +72,10 @@ public class ScoreSiteConnectImpl implements WebDataService {
 
 	@Override
 	public void allWebDataCollect(int type, int start) throws Exception {
+		
+		/*
+		 * AOP를 사용해서 로그 DB 체크 후 start 데이터를 마지막 값으로 변경
+		 */
 
 		while (true) {
 			WebPageData pageData = dataExtract.pageDataExtract(type, start);

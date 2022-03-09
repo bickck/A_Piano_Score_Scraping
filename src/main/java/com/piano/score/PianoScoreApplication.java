@@ -31,7 +31,9 @@ public class PianoScoreApplication {
 	public void init() {
 
 		BaseInformation info = new BaseInformation(0, 0, 0);
-		//baseInfoRepository.save(info);
+		RecordException rx = new RecordException((long) 1);
+		// baseInfoRepository.save(info);
+		//exceptionRepository.save(rx);
 
 	}
 

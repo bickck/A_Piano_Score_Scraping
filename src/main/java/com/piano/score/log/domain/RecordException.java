@@ -23,8 +23,20 @@ public class RecordException {
 	@CreationTimestamp
 	private Timestamp createTime;
 
+	@Override
+	public String toString() {
+		return "RecordException [id=" + id + ", location=" + location + ", createTime=" + createTime + "]";
+	}
+
+	public RecordException() {
+		
+	}
+
+	public RecordException(Long location) {
+		this.location = location;
+	}
+
 	public RecordException(int id, Long location) {
-		super();
 		this.id = id;
 		this.location = location;
 	}

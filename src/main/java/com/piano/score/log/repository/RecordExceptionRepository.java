@@ -8,6 +8,6 @@ import com.piano.score.log.domain.RecordException;
 
 public interface RecordExceptionRepository extends JpaRepository<RecordException, Long> {
 
-	@Query(value = "SELECT * FROM scoreproject.recoredlog ORDER BY id desc limit 1", nativeQuery = true)
+	@Query(value = "SELECT * FROM scoreproject.recoredlog ORDER BY id DESC LIMIT 1", nativeQuery = true)
 	public RecordException findLastRecordLog();
 }

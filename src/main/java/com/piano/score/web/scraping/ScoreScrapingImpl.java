@@ -1,8 +1,16 @@
 package com.piano.score.web.scraping;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.piano.score.web.netconnect.ImslpConnect;
+
 public class ScoreScrapingImpl implements ScoreScraping{
 
-	private String url;
+	
+	@Autowired
+	private ImslpConnect connect;
+	
+	
 	
 	public ScoreScrapingImpl() {
 		// TODO Auto-generated constructor stub
@@ -10,10 +18,6 @@ public class ScoreScrapingImpl implements ScoreScraping{
 	
 	@Override
 	public void scraping() {
-		// TODO Auto-generated method stub
-		
-	}@Override
-	public void settingUrl(String urlName) {
 		// TODO Auto-generated method stub
 		
 	}

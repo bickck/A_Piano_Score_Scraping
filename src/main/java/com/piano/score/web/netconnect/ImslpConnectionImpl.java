@@ -21,6 +21,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -33,8 +34,15 @@ import com.piano.score.mvc.repodomain.page.PageMetaData;
 
 @Component
 public class ImslpConnectionImpl implements ImslpConnect {
+	
+	@Autowired
+	private ImslpURLConfig config;
 
 	public ImslpConnectionImpl() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ImslpConnectionImpl(String url) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -49,15 +57,21 @@ public class ImslpConnectionImpl implements ImslpConnect {
 
 		return result;
 	}
+	
+	@Override
+	public String connectWebSite(String url) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	private String urlSetting(int type, int start) {
-		String url = typeAndStartUrl + "sort=id/type=" + type + "/start=" + start + "/retformat=json";
-		return url;
+		//String url = typeAndStartUrl + "sort=id/type=" + type + "/start=" + start + "/retformat=json";
+		return "";
 	}
 
 	private String urlSetting(String sort, int type, int start) {
-		String url = defaultUrl + "sort=" + sort + "/type=" + type + "/start=" + start + "/retformat=json";
-		return url;
+		// url = defaultUrl + "sort=" + sort + "/type=" + type + "/start=" + start + "/retformat=json";
+		return "";
 	}
 
 }

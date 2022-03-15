@@ -1,21 +1,25 @@
 package com.piano.score.web.netconnect;
 
 import org.json.simple.JSONObject;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
 import com.piano.score.mvc.repodomain.page.PageMetaData;
 
+/*
+ * 이 문서는 URL를 통해 웹을 연결해줍니다.
+ * 
+ * 갱신일 : 2022-03-15
+ */
+
+
 public interface ImslpConnect {
 
-	// List of people (composers, performers, editors, etc.):
-	// http://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=0/retformat=<pretty|json|php|wddx>
-	// List of works:
-	// http://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=2/start=0/retformat=<pretty|json|php|wddx>
-	static String defaultUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
-	static String mainUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=1/retformat=json";
-	static String typeAndStartUrl = "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/";
+	
 
 	String connectWebSite(int type, int start) throws Exception;
+	
+	String connectWebSite(String url) throws Exception;
 
 }

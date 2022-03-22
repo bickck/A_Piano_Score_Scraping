@@ -51,16 +51,12 @@ public class ImslpConnectionImpl implements ImslpConnect {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ImslpConnectionImpl(String url) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public String connectWebSite(int type, int start) throws Exception {
 		// TODO Auto-generated method stub
+		
 		String url = config.defaultURLSetting(type, start);
 		URL link = new URL(url);
-
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(link.openStream(), "UTF-8"));
 		String result = bufferedReader.readLine();
 
@@ -70,7 +66,11 @@ public class ImslpConnectionImpl implements ImslpConnect {
 	@Override
 	public String connectWebSite(String url) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		URL link = new URL(url);
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(link.openStream(), "UTF-8"));
+		
+		
+		return bufferedReader.readLine();
 	}
 
 }

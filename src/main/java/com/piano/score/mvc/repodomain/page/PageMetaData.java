@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 import com.piano.score.web.convert.ResultAvailableConvert;
 
-@Entity
+@Entity(name ="PageMetaData")
 public class PageMetaData {
 
 	@Id

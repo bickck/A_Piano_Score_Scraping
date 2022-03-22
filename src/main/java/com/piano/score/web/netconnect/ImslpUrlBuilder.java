@@ -3,7 +3,7 @@ package com.piano.score.web.netconnect;
 import org.springframework.stereotype.Component;
 
 /**
- * 이 문서는 Imslp에 데이터를 요청 가능한 형태로 url을 만들어줍니다.
+ * 이 문서는 URL에 데이터를 요청 가능한 형태로 url을 만들어줍니다.
  * 
  * @author DongHyeon Kim
  * @date 0222-03-22

@@ -2,6 +2,7 @@ package com.piano.score.web.scraping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.web.netconnect.ImslpConnect;
 
 
@@ -17,13 +18,16 @@ import com.piano.score.web.netconnect.ImslpConnect;
 public class ImslpSiteScraped {
 	
 
-	/**
-	 * 
-	 * @return URL을 리턴합니다.
-	 * 
-	 * */
+	@Autowired
+	private ImslpConnect connect;
 	
-	public void musicUrlScrap() {
+	
+	@Autowired
+	private ScoreRepository repository;
+	
+	public void urlScrap() {
+		
+		
 		
 	}
 }

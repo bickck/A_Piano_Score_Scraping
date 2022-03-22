@@ -16,13 +16,16 @@ import com.piano.score.mvc.service.WebDataService;
 import com.piano.score.pagedomain.PageData;
 import com.piano.score.web.dataprocess.DataExtract;
 
+/**
+ *  
+ * @author DongHyeon_Kim
+ *
+ *
+ * 이 문서는 웹으로 데이터를 요청하고 DB에 저장하는 역할을 합니다.
+ */
 @Service
 public class ScoreSiteConnectImpl implements WebDataService {
 
-	/*
-	 * 이 서비스는 저장을 위한 서비스임
-	 * 
-	 */
 
 	@Autowired
 	private ScoreRepository scoreRepository;

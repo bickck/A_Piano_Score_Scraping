@@ -12,7 +12,6 @@ import com.piano.score.log.repository.RecordExceptionRepository;
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
-import com.piano.score.web.scraping.ArtistScraping;
 
 @SpringBootApplication
 public class PianoScoreApplication {
@@ -33,7 +32,7 @@ public class PianoScoreApplication {
 		BaseInformation info = new BaseInformation(0, 0, 0);
 		RecordException rx = new RecordException((long) 1);
 		// baseInfoRepository.save(info);
-		//exceptionRepository.save(rx);
+		// exceptionRepository.save(rx);
 
 	}
 

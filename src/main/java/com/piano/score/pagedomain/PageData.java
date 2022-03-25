@@ -3,11 +3,11 @@ package com.piano.score.pagedomain;
 import java.util.List;
 
 import com.piano.score.mvc.repodomain.page.PageMetaData;
-import com.piano.score.mvc.repodomain.page.PageUrlList;
+import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 
 public class PageData {
 
-	private List<PageUrlList> list;
+	private List<PageScoreInfos> list;
 
 	private PageMetaData metaData;
 
@@ -15,17 +15,17 @@ public class PageData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PageData(List<PageUrlList> dataListExtract, PageMetaData metaData) {
+	public PageData(List<PageScoreInfos> dataListExtract, PageMetaData metaData) {
 		super();
 		this.list = dataListExtract;
 		this.metaData = metaData;
 	}
 
-	public List<PageUrlList> getList() {
+	public List<PageScoreInfos> getList() {
 		return list;
 	}
 
-	public void setList(List<PageUrlList> list) {
+	public void setList(List<PageScoreInfos> list) {
 		this.list = list;
 	}
 

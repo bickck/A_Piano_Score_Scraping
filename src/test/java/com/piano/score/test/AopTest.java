@@ -12,7 +12,7 @@ import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.assertj.core.api.Assertions;
 
 import com.piano.score.mvc.controller.TestController;
-import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
+import com.piano.score.mvc.serviceImpl.WebDataServiceImpl;
 import com.piano.score.web.dataprocess.WebDataExtract;
 
 public class AopTest {
@@ -28,14 +28,14 @@ public class AopTest {
 	public void aopTest() {
 		String expression = "execution(* com.piano.score.mvc.serviceImpl.*..saveTest1(..))";
 		pointcut.setExpression(expression);
-		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
+		assertTrue(pointcut.matches(method, WebDataServiceImpl.class));
 	}
 
 	// @Test
 	public void aopTest1() {
 		String expression = "execution(* *.*..saveTest1(..))";
 		pointcut.setExpression(expression);
-		assertTrue(pointcut.matches(method, ScoreSiteConnectImpl.class));
+		assertTrue(pointcut.matches(method, WebDataServiceImpl.class));
 	}
 
 	// @Test

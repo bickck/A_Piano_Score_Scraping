@@ -11,7 +11,7 @@ import com.piano.score.log.domain.RecordException;
 import com.piano.score.log.repository.RecordExceptionRepository;
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
-import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
+import com.piano.score.mvc.serviceImpl.WebDataServiceImpl;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
 
 /**
@@ -36,7 +36,7 @@ public class PianoScoreApplication {
 	private BaseInfoRepository baseInfoRepository;
 
 	@Autowired
-	private ScoreSiteConnectImpl connectImpl;
+	private WebDataServiceImpl connectImpl;
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(PianoScoreApplication.class, args);

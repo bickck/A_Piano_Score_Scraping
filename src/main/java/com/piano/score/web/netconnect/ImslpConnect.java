@@ -7,7 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.piano.score.mvc.repodomain.page.PageMetaData;
 
-/*
+/**
+ * 
+ * @author DongHyeon_Kim
+ * 
  * 이 문서는 URL를 통해 웹을 연결해줍니다.
  * 
  * 갱신일 : 2022-03-15
@@ -16,10 +19,8 @@ import com.piano.score.mvc.repodomain.page.PageMetaData;
 
 public interface ImslpConnect {
 
+	String connectSiteGetJson(int type, int start) throws Exception;
 	
-
-	String connectWebSite(int type, int start) throws Exception;
-	
-	String connectWebSite(String url) throws Exception;
+	String connectSiteGetData(String url) throws Exception;
 
 }

@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.piano.score.mvc.repodomain.page.PageUrlList;
+import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.dataprocess.WebDataExtract;
 import com.piano.score.web.netconnect.ImslpConnect;

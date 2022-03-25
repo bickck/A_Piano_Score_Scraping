@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.piano.score.mvc.repodomain.page.PageMetaData;
-import com.piano.score.mvc.repodomain.page.PageUrlList;
-import com.piano.score.mvc.serviceImpl.ScoreSiteConnectImpl;
+import com.piano.score.mvc.repodomain.page.PageScoreInfos;
+import com.piano.score.mvc.serviceImpl.WebDataServiceImpl;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.netconnect.ImslpConnect;
 import com.piano.score.web.netconnect.ImslpConnectionImpl;
@@ -56,7 +56,7 @@ public class TestDataExtractPaser {
 	public void typeDataPageCount() throws Exception {
 		
 
-		ScoreSiteConnectImpl connectImpl = new ScoreSiteConnectImpl();
+		WebDataServiceImpl connectImpl = new WebDataServiceImpl();
 
 		//System.out.println(connectImpl.count_function(1));
 	}

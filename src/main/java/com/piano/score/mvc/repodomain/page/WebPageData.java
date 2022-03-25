@@ -25,7 +25,7 @@ public class WebPageData {
 
 	@Column(name = "LISTS")
 	@OneToMany(mappedBy = "pageId", fetch = FetchType.LAZY)
-	private List<PageUrlList> pageScoreList;
+	private List<PageScoreInfos> pageScoreList;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "start")
@@ -35,13 +35,13 @@ public class WebPageData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public WebPageData(List<PageUrlList> pageScoreList, PageMetaData metaData) {
+	public WebPageData(List<PageScoreInfos> pageScoreList, PageMetaData metaData) {
 		super();
 		this.pageScoreList = pageScoreList;
 		this.metaData = metaData;
 	}
 
-	public WebPageData(Long id, List<PageUrlList> pageScoreList, PageMetaData metaData) {
+	public WebPageData(Long id, List<PageScoreInfos> pageScoreList, PageMetaData metaData) {
 		super();
 		this.id = id;
 		this.pageScoreList = pageScoreList;
@@ -56,11 +56,11 @@ public class WebPageData {
 		this.id = id;
 	}
 
-	public List<PageUrlList> getPageScoreList() {
+	public List<PageScoreInfos> getPageScoreList() {
 		return pageScoreList;
 	}
 
-	public void setPageScoreList(List<PageUrlList> pageScoreList) {
+	public void setPageScoreList(List<PageScoreInfos> pageScoreList) {
 		this.pageScoreList = pageScoreList;
 	}
 

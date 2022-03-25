@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.context.annotation.Configuration;
 
 import com.piano.score.mvc.repodomain.page.PageMetaData;
-import com.piano.score.mvc.repodomain.page.PageUrlList;
+import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 import com.piano.score.pagedomain.PageScoreList;
 
 public class WebDataConvert {
@@ -36,10 +36,10 @@ public class WebDataConvert {
 		return metaDataParser(map);
 	}
 
-	public List<PageUrlList> dataListExtract() throws ParseException {
+	public List<PageScoreInfos> dataListExtract() throws ParseException {
 		// TODO Auto-generated method stub
 
-		List<PageUrlList> scoreMetaDatas = new ArrayList<PageUrlList>();
+		List<PageScoreInfos> scoreMetaDatas = new ArrayList<PageScoreInfos>();
 
 		for (int i = 0; i < jsonObject.size() - 1; i++) {
 			JSONObject data = (JSONObject) jsonObject.get(String.valueOf(i));
@@ -52,7 +52,7 @@ public class WebDataConvert {
 			String intvals = String.valueOf(map.get("intvals"));
 			String permlink = String.valueOf(map.get("permlink"));
 
-			scoreMetaDatas.add(new PageUrlList(id, type, parent, intvals, permlink));
+			scoreMetaDatas.add(new PageScoreInfos(id, type, parent, intvals, permlink));
 
 		}
 		return scoreMetaDatas;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repodomain.page.PageMetaData;
 import com.piano.score.mvc.repodomain.page.WebPageData;
-import com.piano.score.mvc.repodomain.page.PageUrlList;
+import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.netconnect.ImslpConnect;
@@ -24,11 +24,9 @@ public class WebDataExtract implements DataExtract {
 	public WebPageData pageDataExtract(int type, int start) throws Exception {
 		// TODO Auto-generated method stub
 		WebDataConvert dataExtract = null;
-	
 
 		try {
-
-			String result = imslpConnect.connectWebSite(type, start);
+			String result = imslpConnect.connectSiteGetJson(type, start);
 			dataExtract = new WebDataConvert(result);
 
 		} catch (Exception e) {
@@ -38,6 +36,13 @@ public class WebDataExtract implements DataExtract {
 
 		return new WebPageData(dataExtract.dataListExtract(), dataExtract.metadataExtract());
 	}
+
+	/**
+	 * 
+	 * 굳이 이걸 만들 필요가 있는지 의문
+	 * 
+	 * @return 웹 데이터 갯수
+	 */
 
 	@Override
 	public Long typeOneWebDataCount() {
@@ -66,13 +71,27 @@ public class WebDataExtract implements DataExtract {
 		return result;
 	}
 
-	private long webDataCount(int type) throws Exception {
-		int start = 0, end = 0, endData = 0;
+	/**
+	 * 
+	 * 이 함수 다시 짜야함 못생겼음;;
+	 * 
+	 * 탐색은 이분탐색으로 진행
+	 * 
+	 * 웹사이트 호출이 여러번 일어남
+	 * 
+	 * 같은 코드가 중복으로 발생함
+	 * 
+	 * @throws Exception
+	 * 
+	 */
+
+	private int findEndData(int type) throws Exception {
+		int end = 0;
 		boolean isCheck = true;
 
 		while (isCheck) {
 
-			String data = imslpConnect.connectWebSite(type, end);
+			String data = imslpConnect.connectSiteGetJson(type, end);
 			WebDataConvert dataExtractParser = new WebDataConvert(data);
 
 			if (dataExtractParser.metadataExtract().isMoreResultAvailable()) {
@@ -81,14 +100,18 @@ public class WebDataExtract implements DataExtract {
 				isCheck = false;
 			}
 		}
+		return end;
+	}
 
-		isCheck = true;
+	private long webDataCount(int type) throws Exception {
+		int start = 0, end = findEndData(type), endData = 0;
+		boolean isCheck = true;
 
 		while (isCheck) {
 
 			int mid = (end + start) / 2;
 
-			String data = imslpConnect.connectWebSite(type, mid);
+			String data = imslpConnect.connectSiteGetJson(type, mid);
 
 			WebDataConvert dataExtractParser = new WebDataConvert(data);
 
@@ -101,7 +124,7 @@ public class WebDataExtract implements DataExtract {
 			if (dataExtractParser.dataSize() < 1000 && dataExtractParser.dataSize() > 1) {
 				end = mid;
 
-				data = imslpConnect.connectWebSite(1, end);
+				data = imslpConnect.connectSiteGetJson(1, end);
 				dataExtractParser = new WebDataConvert(data);
 				endData = dataExtractParser.dataSize();
 				isCheck = false;
@@ -109,15 +132,5 @@ public class WebDataExtract implements DataExtract {
 		}
 
 		return (((end - 1) * 1000) + endData);
-	}
-
-	public void Test() {
-
-		try {
-			throw new Exception("오류");
-		} catch (Exception e) {
-
-		}
-
 	}
 }

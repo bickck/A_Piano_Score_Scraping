@@ -18,14 +18,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.dataprocess.extract.WebDataExtract;
-import com.piano.score.web.netconnect.ImslpConnect;
-import com.piano.score.web.netconnect.ImslpConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnection;
+import com.piano.score.web.netconnect.ImslpConnectionRestAPI;
 
 @SpringBootTest
 public class TestWebDataExtract {
 
 	@Autowired
-	private ImslpConnect imslpConnect;
+	private ImslpConnection imslpConnect;
 
 	@Autowired
 	private WebDataExtract dataExtract;
@@ -42,7 +42,7 @@ public class TestWebDataExtract {
 	}
 
 	public void connectTest() throws Exception {
-		ImslpConnect connect = new ImslpConnectionImpl();
+		ImslpConnection connect = new ImslpConnectionRestAPI();
 		// String url = connect.typeAndStartUrlSetting(1, 100000);
 		// String test = connect.connectToIMSLP(url);
 		// System.out.println(test.length());
@@ -51,7 +51,7 @@ public class TestWebDataExtract {
 	}
 
 	public void jsonMapKeyTest() throws Exception {
-		ImslpConnect connect = new ImslpConnectionImpl();
+		ImslpConnection connect = new ImslpConnectionRestAPI();
 		// String url = connect.typeAndStartUrlSetting(1, 100000);
 
 		Long start = System.currentTimeMillis();
@@ -63,7 +63,7 @@ public class TestWebDataExtract {
 	}
 
 	public void dataListExtractTest() throws Exception {
-		ImslpConnect connect = new ImslpConnectionImpl();
+		ImslpConnection connect = new ImslpConnectionRestAPI();
 		// String url = connect.typeAndStartUrlSetting(1, 0);
 		// String result = connect.connectToIMSLP(url);
 		/// DataExtractParser dataExtract = new DataExtractParser();

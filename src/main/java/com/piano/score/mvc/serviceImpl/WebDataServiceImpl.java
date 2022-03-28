@@ -21,7 +21,9 @@ import com.piano.score.web.dataprocess.extract.DataExtract;
  * @author DongHyeon_Kim
  *
  *
- * 이 문서는 웹으로 데이터를 요청하고 DB에 저장하는 역할을 합니다.
+ * 이 문서는 개발자의 요청에 따라 IMSLP에서 데이터를 가져오고 DB에 저장하는 역할을 수행합니다.
+ * 1. 데이터의 총 갯수를 파악할 수 있는 코드 작성
+ * 2. 데이터를 수집 저장하는 코드 작성
  */
 @Service
 public class WebDataServiceImpl implements WebDataService {

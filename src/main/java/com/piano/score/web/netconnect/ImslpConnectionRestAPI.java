@@ -39,17 +39,17 @@ import com.piano.score.mvc.repodomain.page.PageMetaData;
  * 
  * @author DongHyeon_Kim
  * 
- *         이 문서는 웹에서 데이터를 가져옵니다. 데이터-> JSON -> 페이지 데이터
+ * 이 문서는 웹에서 데이터를 가져옵니다. 데이터-> JSON -> 페이지 데이터
  * 
  */
 
 @Component
-public class ImslpConnectionImpl implements ImslpConnect {
+public class ImslpConnectionRestAPI implements ImslpConnection {
 
 	@Autowired
 	private ImslpUrlBuilder config;
 
-	public ImslpConnectionImpl() {
+	public ImslpConnectionRestAPI() {
 		// TODO Auto-generated constructor stub
 	}
 

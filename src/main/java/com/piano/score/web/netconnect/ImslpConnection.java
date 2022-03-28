@@ -17,7 +17,7 @@ import com.piano.score.mvc.repodomain.page.PageMetaData;
  */
 
 
-public interface ImslpConnect {
+public interface ImslpConnection {
 
 	String connectSiteGetJson(int type, int start) throws Exception;
 	

@@ -11,14 +11,14 @@ import com.piano.score.mvc.repodomain.page.WebPageData;
 import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.web.convert.WebDataConvert;
-import com.piano.score.web.netconnect.ImslpConnect;
-import com.piano.score.web.netconnect.ImslpConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnection;
+import com.piano.score.web.netconnect.ImslpConnectionRestAPI;
 
 @Component
 public class WebDataExtract implements DataExtract {
 
 	@Autowired
-	private ImslpConnect imslpConnect;
+	private ImslpConnection imslpConnect;
 
 	@Override
 	public WebPageData pageDataExtract(int type, int start) throws Exception {

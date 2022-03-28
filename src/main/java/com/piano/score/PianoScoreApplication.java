@@ -12,7 +12,7 @@ import com.piano.score.log.repository.RecordExceptionRepository;
 import com.piano.score.mvc.repodomain.page.BaseInformation;
 import com.piano.score.mvc.repository.BaseInfoRepository;
 import com.piano.score.mvc.serviceImpl.WebDataServiceImpl;
-import com.piano.score.web.netconnect.ImslpConnectionImpl;
+import com.piano.score.web.netconnect.ImslpConnectionRestAPI;
 
 /**
  * {@link https://imslp.org/wiki/Main_Page}

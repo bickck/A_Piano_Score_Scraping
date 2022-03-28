@@ -14,7 +14,7 @@ import com.piano.score.mvc.repository.PageDataListRepository;
 import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.mvc.service.WebDataService;
 import com.piano.score.pagedomain.PageData;
-import com.piano.score.web.dataprocess.DataExtract;
+import com.piano.score.web.dataprocess.extract.DataExtract;
 
 /**
  *  

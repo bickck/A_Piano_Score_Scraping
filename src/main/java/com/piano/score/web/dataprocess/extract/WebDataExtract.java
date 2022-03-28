@@ -1,4 +1,4 @@
-package com.piano.score.web.dataprocess;
+package com.piano.score.web.dataprocess.extract;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;

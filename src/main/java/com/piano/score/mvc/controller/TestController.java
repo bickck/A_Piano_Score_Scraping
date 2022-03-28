@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.piano.score.log.record.MeasureTimeLog;
-import com.piano.score.web.dataprocess.WebDataExtract;
+import com.piano.score.web.dataprocess.extract.WebDataExtract;
 
 @RestController
 @Import(MeasureTimeLog.class)

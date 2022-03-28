@@ -13,7 +13,7 @@ import org.assertj.core.api.Assertions;
 
 import com.piano.score.mvc.controller.TestController;
 import com.piano.score.mvc.serviceImpl.WebDataServiceImpl;
-import com.piano.score.web.dataprocess.WebDataExtract;
+import com.piano.score.web.dataprocess.extract.WebDataExtract;
 
 public class AopTest {
 

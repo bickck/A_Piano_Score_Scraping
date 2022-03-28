@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * 이 문서는 URL에 데이터를 요청 가능한 형태로 url을 만들어줍니다.
  * 
  * @author DongHyeon Kim
- * @date 0222-03-22
+ * @date 2022-03-22
  * 
  * 
  */
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 public class ImslpUrlBuilder {
 	/*
 	 * URL 링크 :
-	 * 
 	 * https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=1/retformat=json
 	 * 
 	 * */

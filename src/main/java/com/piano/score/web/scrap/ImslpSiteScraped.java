@@ -1,10 +1,10 @@
-package com.piano.score.web.scraping;
+package com.piano.score.web.scrap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.piano.score.mvc.repodomain.page.WebPageData;
 import com.piano.score.mvc.repository.ScoreRepository;
 import com.piano.score.web.netconnect.ImslpConnect;
-
 
 /**
  * 
@@ -14,20 +14,24 @@ import com.piano.score.web.netconnect.ImslpConnect;
  * @author DongHyeon Kim
  * @date 0222-03-22
  * 
- * */
+ */
 public class ImslpSiteScraped {
-	
 
 	@Autowired
 	private ImslpConnect connect;
-	
-	
+
 	@Autowired
 	private ScoreRepository repository;
-	
-	public void urlScrap() {
+
+	public String scraped(WebPageData webPageData) {
 		
-		
-		
+		String permlink;
+		return "";
 	}
+
+	private String getPermlinkById(long id) {
+
+		return repository.getById(id).getPermlink();
+	}
+
 }

@@ -1,4 +1,4 @@
-package com.piano.score.test;
+package com.piano.score.test.function;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

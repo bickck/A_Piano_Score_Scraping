@@ -34,6 +34,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.piano.score.mvc.repodomain.page.PageMetaData;
+import com.piano.score.web.imslp.ImslpConnection;
 
 /**
  * 

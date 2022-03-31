@@ -1,4 +1,4 @@
-package com.piano.score.test;
+package com.piano.score.test.function;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.piano.score.mvc.repodomain.page.PageScoreInfos;
 import com.piano.score.web.convert.WebDataConvert;
 import com.piano.score.web.dataprocess.extract.WebDataExtract;
-import com.piano.score.web.netconnect.ImslpConnection;
+import com.piano.score.web.imslp.ImslpConnection;
 import com.piano.score.web.netconnect.ImslpConnectionRestAPI;
 
 @SpringBootTest

@@ -3,7 +3,7 @@ package com.piano.score.web.dataprocess.extract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.piano.score.web.netconnect.ImslpConnection;
+import com.piano.score.web.imslp.ImslpConnection;
 
 /**
  * @author DongHyeon_Kim

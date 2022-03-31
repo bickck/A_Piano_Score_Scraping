@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ImslpUrlBuilder {
+	
 	/*
 	 * URL 링크 :
 	 * https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=1/start=1/retformat=json
@@ -31,5 +32,4 @@ public class ImslpUrlBuilder {
 		return "https://imslp.org/imslpscripts/API.ISCR.php?account=worklist/disclaimer=accepted/sort=id/type=" + type
 				+ "/start=" + start + "/retformat=json";
 	}
-
 }

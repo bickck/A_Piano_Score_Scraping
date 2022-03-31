@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.piano.score.mvc.repodomain.page.WebPageData;
 import com.piano.score.mvc.repository.ScoreRepository;
-import com.piano.score.web.netconnect.ImslpConnection;
+import com.piano.score.web.imslp.ImslpConnection;
 
 /**
  * 

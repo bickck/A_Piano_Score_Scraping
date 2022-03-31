@@ -1,4 +1,4 @@
-package com.piano.score.web.netconnect;
+package com.piano.score.web.imslp;
 
 import org.json.simple.JSONObject;
 

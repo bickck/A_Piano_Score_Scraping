@@ -1,4 +1,4 @@
-package com.piano.score.test;
+package com.piano.score.test.function;
 
 import java.util.List;
 import java.util.Optional;

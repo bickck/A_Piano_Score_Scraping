@@ -1,4 +1,4 @@
-package com.piano.score.test;
+package com.piano.score.test.function;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
